@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+
+numpy
+opencv-python-headless
+pillow
+python-multipart
+
+insightface
+onnxruntime
+
+SQLAlchemy==2.0.44
+PyMySQL==1.1.2

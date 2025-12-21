@@ -16,7 +16,7 @@ class DeleteFaceRequest(BaseModel):
 
 # --- Endpoints ---
 @router.get("/hello")
-def hello():
+def hello():    
     return {"message": "Hello world"}
 
 @router.post("/register-face")
