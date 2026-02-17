@@ -1,139 +1,209 @@
-from insightface.app import FaceAnalysis
 import cv2
 import numpy as np
 import base64
-import src.dto.request.RegisterRequest as RegisterRequest
-import src.dto.request.RecognizeFaceRequest as RecognizeFaceRequest
-from src.db_config.mysqlDb import session
-from src.entity.FaceEmbedding import FaceEmbedding
-from sqlalchemy.exc import SQLAlchemyError
 import uuid
+import logging
+from typing import List, Optional
+
+from sqlalchemy.orm import Session
+from sqlalchemy.exc import SQLAlchemyError
+
+from src.core.FaceModelSingleton import FaceModelSingleton
+from src.entity.FaceEmbedding import FaceEmbedding
+
+
+logger = logging.getLogger(__name__)
+
 
 def cosine_similarity(a: np.ndarray, b: np.ndarray) -> float:
-    """Tính cosine similarity giữa hai vector."""
-    score = np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
-    print(f"[DEBUG] Cosine similarity: {score}")
-    return score
+
+    norm_a = np.linalg.norm(a)
+    norm_b = np.linalg.norm(b)
+
+    if norm_a == 0 or norm_b == 0:
+        return -1
+
+    return float(np.dot(a, b) / (norm_a * norm_b))
+
 
 class FaceRecognitionService:
+
     def __init__(self):
-        print("[DEBUG] Initializing FaceAnalysis model...")
-        self.app = FaceAnalysis(name="buffalo_l")
-        self.app.prepare(ctx_id=0, det_size=(640, 640))
-        print("[DEBUG] FaceAnalysis model ready")
+        logger.debug("Initializing FaceRecognitionService")
+        self.app = FaceModelSingleton.get_model()
+        logger.debug("FaceRecognitionService initialized with model")
 
-    # --- Đăng ký face ---
-    def register_face(self, request: RegisterRequest) -> str:
-        print(f"[DEBUG] Registering face for employee_id={request.employee_id}, images count={len(request.images)}")
+    # ================= INTERNAL =================
 
-        for idx, img_base64 in enumerate(request.images):
-            image_data = base64.b64decode(img_base64)
-            nparr = np.frombuffer(image_data, np.uint8)
-            image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    def _extract_embedding(
+        self,
+        image_bytes: bytes
+    ) -> Optional[np.ndarray]:
 
-            print(f"[DEBUG] Image {idx} decoded. Is None? {image is None}")
+        logger.debug(f"Extracting embedding from image of size: {len(image_bytes)} bytes")
 
-            faces = self.app.get(image)
-            print(f"[DEBUG] Faces detected in image {idx}: {len(faces)}")
+        nparr = np.frombuffer(image_bytes, np.uint8)
 
-            if len(faces) == 0:
-                raise ValueError(f"No face detected in image index {idx}")
-
-            face_embedding = faces[0].embedding
-
-            new_face = FaceEmbedding(
-                id=str(uuid.uuid4()),
-                employee_id=request.employee_id,
-                embedding=face_embedding.tolist()
-            )
-
-            session.add(new_face)   # 🔥 BẮT BUỘC 🔥
-
-        try:
-            session.commit()
-        except SQLAlchemyError as e:
-            print("🔥 DB COMMIT ERROR 🔥")
-            print(e)
-            session.rollback()
-            raise
-
-        print(f"[DEBUG] Commit completed for employee_id={request.employee_id}")
-        return "successfully"
-
-    # --- Nhận diện face ---
-    def recognize_face(self, request: RecognizeFaceRequest) -> str:
-        print("[DEBUG] Recognizing face from image")
-        image_data = base64.b64decode(request.image)
-        nparr = np.frombuffer(image_data, np.uint8)
         image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
-        print(f"[DEBUG] Image decoded. Is None? {image is None}")
-
-        faces = self.app.get(image)
-        print(f"[DEBUG] Faces detected: {len(faces)}")
-        if len(faces) == 0:
-            return "No face"
-
-        emb = faces[0].embedding
-        all_faces = session.query(FaceEmbedding).all()
-        print(f"[DEBUG] Total embeddings in DB: {len(all_faces)}")
-
-        best_match_id = None
-        best_score = -1
-        for idx, face_record in enumerate(all_faces):
-            db_emb = np.array(face_record.embedding)
-            score = cosine_similarity(emb, db_emb)
-            print(f"[DEBUG] Comparing with DB record {idx} (employee_id={face_record.employee_id}), score={score}")
-            if score > best_score:
-                best_score = score
-                best_match_id = face_record.employee_id
-
-        threshold = 0.6
-        if best_score >= threshold:
-            print(f"[DEBUG] Best match above threshold: employee_id={best_match_id}, score={best_score}")
-            return best_match_id
-        else:
-            print(f"[DEBUG] No match above threshold ({threshold}), best score={best_score}")
+        if image is None:
+            logger.warning("Failed to decode image")
             return None
 
-    # --- Cập nhật embedding cho employee ---
-    def update_face(self, employee_id: str, new_images: list[str]) -> str:
-        print(f"[DEBUG] Updating face embeddings for employee_id={employee_id}, new_images count={len(new_images)}")
-        deleted = session.query(FaceEmbedding).filter_by(employee_id=employee_id).delete()
-        session.commit()
-        print(f"[DEBUG] Deleted {deleted} old embeddings")
+        faces = self.app.get(image)
 
-        for idx, img_base64 in enumerate(new_images):
-            image_data = base64.b64decode(img_base64)
-            nparr = np.frombuffer(image_data, np.uint8)
-            image = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        if not faces:
+            logger.debug("No faces detected in image")
+            return None
 
-            print(f"[DEBUG] Update image {idx} decoded. Is None? {image is None}")
+        logger.debug(f"Face detected, embedding shape: {faces[0].embedding.shape}")
+        return faces[0].embedding
 
-            faces = self.app.get(image)
-            print(f"[DEBUG] Faces detected in update image {idx}: {len(faces)}")
-            if len(faces) == 0:
-                continue  # bỏ qua nếu không detect
+    # ================= REGISTER =================
 
-            face_embedding = faces[0].embedding
-            new_face = FaceEmbedding(
-                id=str(uuid.uuid4()),
-                employee_id=employee_id,
-                embedding=face_embedding.tolist()
+    def register_embeddings(
+        self,
+        db: Session,
+        employee_id: str,
+        images: List[bytes]
+    ) -> int:
+
+        logger.debug(f"Registering embeddings for employee_id: {employee_id}, images: {len(images)}")
+
+        embeddings: list[FaceEmbedding] = []
+
+        for img_bytes in images:
+
+            emb = self._extract_embedding(img_bytes)
+
+            if emb is None:
+                continue
+
+            embeddings.append(
+                FaceEmbedding(
+                    id=str(uuid.uuid4()),
+                    employee_id=employee_id,
+                    embedding=emb.tolist()
+                )
             )
-            session.add(new_face)
-            print(f"[DEBUG] Added new embedding for image {idx}")
 
-        session.commit()
-        print(f"[DEBUG] Update commit completed for employee_id={employee_id}")
-        return "update successfully"
+        if not embeddings:
+            logger.warning(f"No valid embeddings extracted for employee_id: {employee_id}")
+            return 0
 
-    # --- Xóa tất cả embeddings của employee ---
-    def delete_face(self, employee_id: str) -> str:
-        deleted = session.query(FaceEmbedding).filter_by(employee_id=employee_id).delete()
-        session.commit()
-        print(f"[DEBUG] Deleted {deleted} embeddings for employee_id={employee_id}")
-        if deleted > 0:
-            return "delete successfully"
-        else:
-            return "no record found"
+        try:
+
+            db.bulk_save_objects(embeddings)
+            logger.debug(f"Saved {len(embeddings)} embeddings for employee_id: {employee_id}")
+
+            return len(embeddings)
+
+        except SQLAlchemyError:
+
+            logger.error(
+                f"DB error while saving embeddings for employee_id: {employee_id}",
+                exc_info=True
+            )
+
+            raise
+
+    def register_from_base64(
+        self,
+        db: Session,
+        employee_id: str,
+        base64_images: List[str]
+    ) -> int:
+
+        images = [
+            base64.b64decode(img)
+            for img in base64_images
+        ]
+
+        return self.register_embeddings(
+            db,
+            employee_id,
+            images
+        )
+
+    # ================= RECOGNIZE =================
+
+    def recognize(
+        self,
+        db: Session,
+        base64_image: str,
+        threshold: float = 0.6
+    ) -> Optional[str]:
+
+        logger.debug(f"Starting face recognition with threshold: {threshold}")
+
+        image_bytes = base64.b64decode(base64_image)
+
+        emb = self._extract_embedding(image_bytes)
+
+        if emb is None:
+            logger.warning("Failed to extract embedding for recognition")
+            return None
+
+        best_score = -1
+        best_employee = None
+
+        query = db.query(
+            FaceEmbedding.employee_id,
+            FaceEmbedding.embedding
+        ).yield_per(1000)
+
+        count = 0
+        for row in query:
+            count += 1
+            db_emb = np.array(row.embedding)
+
+            score = cosine_similarity(emb, db_emb)
+
+            if score > best_score:
+                best_score = score
+                best_employee = row.employee_id
+
+        logger.debug(f"Compared against {count} embeddings, best score: {best_score}")
+
+        if best_score >= threshold:
+            logger.info(f"Recognition successful: employee_id {best_employee}, score {best_score}")
+            return best_employee
+
+        logger.info(f"Recognition failed: best score {best_score} below threshold {threshold}")
+        return None
+
+    # ================= UPDATE =================
+
+    def update(
+        self,
+        db: Session,
+        employee_id: str,
+        base64_images: List[str]
+    ) -> int:
+
+        db.query(FaceEmbedding).filter_by(
+            employee_id=employee_id
+        ).delete()
+
+        images = [
+            base64.b64decode(img)
+            for img in base64_images
+        ]
+
+        return self.register_embeddings(
+            db,
+            employee_id,
+            images
+        )
+
+    # ================= DELETE =================
+
+    def delete(
+        self,
+        db: Session,
+        employee_id: str
+    ) -> int:
+
+        return db.query(FaceEmbedding).filter_by(
+            employee_id=employee_id
+        ).delete()

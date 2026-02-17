@@ -1,0 +1,748 @@
+2026-02-16 23:27:23,179 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:27:29,613 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:27:34,817 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:27:40,268 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:27:46,315 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:27:54,461 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:28:03,044 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:28:12,450 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:28:19,866 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:28:28,102 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:28:36,879 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:28:46,002 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:28:54,233 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:29:02,790 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:29:12,287 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:29:19,702 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:29:27,344 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:29:35,600 - __main__ - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:29:57,784 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:30:02,066 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-16 23:30:02,067 - python_multipart.multipart - DEBUG - Calling on_header_field with data[36:55]
+2026-02-16 23:30:02,067 - python_multipart.multipart - DEBUG - Calling on_header_value with data[57:112]
+2026-02-16 23:30:02,067 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-16 23:30:02,067 - python_multipart.multipart - DEBUG - Calling on_header_field with data[114:126]
+2026-02-16 23:30:02,067 - python_multipart.multipart - DEBUG - Calling on_header_value with data[128:143]
+2026-02-16 23:30:02,068 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-16 23:30:02,068 - python_multipart.multipart - DEBUG - Calling on_header_field with data[145:159]
+2026-02-16 23:30:02,068 - python_multipart.multipart - DEBUG - Calling on_header_value with data[161:167]
+2026-02-16 23:30:02,068 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-16 23:30:02,068 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-16 23:30:02,069 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:194758]
+2026-02-16 23:30:02,070 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-16 23:30:02,070 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-16 23:30:02,078 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-16 23:30:02,079 - src.controller.FaceRecognitionController - DEBUG - Batch register called with file: faces_batch_test.zip
+2026-02-16 23:30:02,079 - src.service.FaceModelSingleton - DEBUG - Starting batch registration from ZIP file
+2026-02-16 23:30:02,080 - src.service.FaceModelSingleton - DEBUG - ZIP file contains 12 entries
+2026-02-16 23:30:02,080 - src.service.FaceModelSingleton - DEBUG - Processing employee: NV0010, images: 2
+2026-02-16 23:30:02,080 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0010, images: 2
+2026-02-16 23:30:02,081 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:02,172 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:02,174 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:02,279 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:02,280 - src.service.FaceRecognitionService - WARNING - No valid embeddings extracted for employee_id: NV0010
+2026-02-16 23:30:02,281 - src.service.FaceModelSingleton - DEBUG - Processing employee: NV0011, images: 2
+2026-02-16 23:30:02,282 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0011, images: 2
+2026-02-16 23:30:02,282 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:02,424 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:02,425 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:02,533 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:02,535 - src.service.FaceRecognitionService - WARNING - No valid embeddings extracted for employee_id: NV0011
+2026-02-16 23:30:02,536 - src.service.FaceModelSingleton - DEBUG - Processing employee: NV0012, images: 2
+2026-02-16 23:30:02,538 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0012, images: 2
+2026-02-16 23:30:02,540 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:02,625 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:02,625 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:02,694 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:02,695 - src.service.FaceRecognitionService - WARNING - No valid embeddings extracted for employee_id: NV0012
+2026-02-16 23:30:02,695 - src.service.FaceModelSingleton - DEBUG - Processing employee: NV0006, images: 2
+2026-02-16 23:30:02,696 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0006, images: 2
+2026-02-16 23:30:02,697 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:02,768 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:02,768 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:02,833 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:02,833 - src.service.FaceRecognitionService - WARNING - No valid embeddings extracted for employee_id: NV0006
+2026-02-16 23:30:02,834 - src.service.FaceModelSingleton - DEBUG - Processing employee: NV0004, images: 2
+2026-02-16 23:30:02,835 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0004, images: 2
+2026-02-16 23:30:02,835 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:02,901 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:02,901 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:02,987 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:02,990 - src.service.FaceRecognitionService - WARNING - No valid embeddings extracted for employee_id: NV0004
+2026-02-16 23:30:02,990 - src.service.FaceModelSingleton - DEBUG - Processing last employee: NV0005, images: 2
+2026-02-16 23:30:02,991 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0005, images: 2
+2026-02-16 23:30:02,991 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:03,067 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:03,067 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 21593 bytes
+2026-02-16 23:30:03,139 - src.service.FaceRecognitionService - DEBUG - No faces detected in image
+2026-02-16 23:30:03,140 - src.service.FaceRecognitionService - WARNING - No valid embeddings extracted for employee_id: NV0005
+2026-02-16 23:30:03,140 - src.service.FaceModelSingleton - INFO - Batch registration completed: 0 employees, 0 embeddings
+2026-02-16 23:30:03,142 - src.controller.FaceRecognitionController - INFO - Batch register completed: {'employees': 0, 'embeddings': 0}
+2026-02-16 23:30:03,144 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-16 23:40:48,621 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-16 23:40:48,621 - python_multipart.multipart - DEBUG - Calling on_header_field with data[37:56]
+2026-02-16 23:40:48,622 - python_multipart.multipart - DEBUG - Calling on_header_value with data[58:113]
+2026-02-16 23:40:48,622 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-16 23:40:48,622 - python_multipart.multipart - DEBUG - Calling on_header_field with data[115:127]
+2026-02-16 23:40:48,622 - python_multipart.multipart - DEBUG - Calling on_header_value with data[129:144]
+2026-02-16 23:40:48,622 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-16 23:40:48,622 - python_multipart.multipart - DEBUG - Calling on_header_field with data[146:160]
+2026-02-16 23:40:48,624 - python_multipart.multipart - DEBUG - Calling on_header_value with data[162:168]
+2026-02-16 23:40:48,624 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-16 23:40:48,625 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-16 23:40:48,625 - python_multipart.multipart - DEBUG - Calling on_part_data with data[172:131244]
+2026-02-16 23:40:48,626 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:63404]
+2026-02-16 23:40:48,626 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-16 23:40:48,626 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-16 23:40:48,627 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-16 23:40:48,628 - src.controller.FaceRecognitionController - DEBUG - Batch register called with file: faces_batch_real.zip
+2026-02-16 23:40:48,628 - src.service.FaceModelSingleton - DEBUG - Starting batch registration from ZIP file
+2026-02-16 23:40:48,628 - src.service.FaceModelSingleton - DEBUG - ZIP file contains 6 entries
+2026-02-16 23:40:48,629 - src.service.FaceModelSingleton - DEBUG - Processing employee: NV0004, images: 2
+2026-02-16 23:40:48,629 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0004, images: 2
+2026-02-16 23:40:48,629 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 27127 bytes
+2026-02-16 23:40:49,870 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-16 23:40:49,882 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 25740 bytes
+2026-02-16 23:40:51,297 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-16 23:40:54,096 - src.service.FaceRecognitionService - ERROR - DB error while saving embeddings for employee_id: NV0004
+Traceback (most recent call last):
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\pymysql\connections.py", line 661, in connect
+    sock = socket.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hi ASUS TUF\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 827, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hi ASUS TUF\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
+    self.__connect()
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\pymysql\connections.py", line 365, in __init__
+    self.connect()
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\pymysql\connections.py", line 723, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'my-mysql' ([Errno 11001] getaddrinfo failed)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\project\testFace\facial_recognition_api\src\service\FaceRecognitionService.py", line 96, in register_embeddings
+    db.bulk_save_objects(embeddings)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4564, in bulk_save_objects
+    self._bulk_save_mappings(
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4741, in _bulk_save_mappings
+    with util.safe_reraise():
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _bulk_save_mappings
+    bulk_persistence._bulk_insert(
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\bulk_persistence.py", line 153, in _bulk_insert
+    connection = session_transaction.connection(base_mapper)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in connection
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1037, in connection
+    return self._connection_for_bind(bind, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1173, in _connection_for_bind
+    conn = self._parent._connection_for_bind(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1187, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
+    self.__connect()
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\pymysql\connections.py", line 365, in __init__
+    self.connect()
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\pymysql\connections.py", line 723, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'my-mysql' ([Errno 11001] getaddrinfo failed)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-02-16 23:40:54,452 - src.controller.FaceRecognitionController - ERROR - Batch register failed: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'my-mysql' ([Errno 11001] getaddrinfo failed)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\pymysql\connections.py", line 661, in connect
+    sock = socket.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hi ASUS TUF\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 827, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hi ASUS TUF\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
+    self.__connect()
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\pymysql\connections.py", line 365, in __init__
+    self.connect()
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\pymysql\connections.py", line 723, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on 'my-mysql' ([Errno 11001] getaddrinfo failed)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\project\testFace\facial_recognition_api\src\controller\FaceRecognitionController.py", line 57, in register_face_batch
+    result = batch_service.register_from_zip(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\src\service\FaceModelSingleton.py", line 63, in register_from_zip
+    count = self.face_service.register_embeddings(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\src\service\FaceRecognitionService.py", line 96, in register_embeddings
+    db.bulk_save_objects(embeddings)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4564, in bulk_save_objects
+    self._bulk_save_mappings(
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4741, in _bulk_save_mappings
+    with util.safe_reraise():
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4730, in _bulk_save_mappings
+    bulk_persistence._bulk_insert(
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\bulk_persistence.py", line 153, in _bulk_insert
+    connection = session_transaction.connection(base_mapper)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in connection
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1037, in connection
+    return self._connection_for_bind(bind, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1173, in _connection_for_bind
+    conn = self._parent._connection_for_bind(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1187, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3277, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 143, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3301, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 447, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1264, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 711, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 177, in _do_get
+    with util.safe_reraise():
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\impl.py", line 175, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 388, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 673, in __init__
+    self.__connect()
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 899, in __connect
+    with util.safe_reraise():
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 895, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\create.py", line 661, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 629, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)  # type: ignore[no-any-return]  # NOQA: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\pymysql\connections.py", line 365, in __init__
+    self.connect()
+  File "C:\project\testFace\facial_recognition_api\.venv\Lib\site-packages\pymysql\connections.py", line 723, in connect
+    raise exc
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'my-mysql' ([Errno 11001] getaddrinfo failed)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-02-16 23:40:54,458 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-16 23:44:14,875 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:44:27,126 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-16 23:44:42,971 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-16 23:44:42,972 - python_multipart.multipart - DEBUG - Calling on_header_field with data[34:53]
+2026-02-16 23:44:42,972 - python_multipart.multipart - DEBUG - Calling on_header_value with data[55:110]
+2026-02-16 23:44:42,972 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-16 23:44:42,972 - python_multipart.multipart - DEBUG - Calling on_header_field with data[112:124]
+2026-02-16 23:44:42,972 - python_multipart.multipart - DEBUG - Calling on_header_value with data[126:141]
+2026-02-16 23:44:42,973 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-16 23:44:42,973 - python_multipart.multipart - DEBUG - Calling on_header_field with data[143:157]
+2026-02-16 23:44:42,973 - python_multipart.multipart - DEBUG - Calling on_header_value with data[159:165]
+2026-02-16 23:44:42,974 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-16 23:44:42,974 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-16 23:44:42,975 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:194476]
+2026-02-16 23:44:42,975 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-16 23:44:42,975 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-16 23:44:42,979 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-16 23:44:42,980 - src.controller.FaceRecognitionController - DEBUG - Batch register called with file: faces_batch_real.zip
+2026-02-16 23:44:42,980 - src.service.FaceModelSingleton - DEBUG - Starting batch registration from ZIP file
+2026-02-16 23:44:42,980 - src.service.FaceModelSingleton - DEBUG - ZIP file contains 6 entries
+2026-02-16 23:44:42,981 - src.service.FaceModelSingleton - DEBUG - Processing employee: NV0004, images: 2
+2026-02-16 23:44:42,981 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0004, images: 2
+2026-02-16 23:44:42,981 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 27127 bytes
+2026-02-16 23:44:44,367 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-16 23:44:44,439 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 25740 bytes
+2026-02-16 23:44:45,974 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-16 23:44:46,055 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-02-16 23:44:46,194 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-16 23:44:46,277 - sqlalchemy.engine.Engine - INFO - [generated in 0.08190s] [{'id': '180a3e5b-92b3-45ed-b916-b6b3e29c3d1b', 'employee_id': 'NV0004', 'embedding': '[0.10222280770540237, -0.5873446464538574, 0.05218347907066345, 0.5840742588043213, -0.12561547756195068, 0.024112433195114136, -0.5436100959777832,  ... (10380 characters truncated) ... 9375, 0.34773242473602295, -0.08190112560987473, -0.5275532603263855, 0.3838738203048706, 0.742713987827301, 0.16696760058403015, 0.1979396641254425]'}, {'id': '4be12897-cdf8-4131-a1d5-47f1dbd81a3c', 'employee_id': 'NV0004', 'embedding': '[-0.0568789504468441, -0.21007932722568512, -0.6226688027381897, 0.23929652571678162, -0.4056798815727234, 0.0640910416841507, -0.15661929547786713,  ... (10399 characters truncated) ... 747, -0.20242060720920563, 0.13038226962089539, -0.2743154764175415, 0.3958803117275238, 0.4079706072807312, 0.8310103416442871, -0.9062883853912354]'}]
+2026-02-16 23:44:46,325 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0004
+2026-02-16 23:44:46,327 - src.service.FaceModelSingleton - DEBUG - Saved 2 embeddings for NV0004
+2026-02-16 23:44:46,328 - src.service.FaceModelSingleton - DEBUG - Processing employee: NV0010, images: 2
+2026-02-16 23:44:46,329 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0010, images: 2
+2026-02-16 23:44:46,331 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 49160 bytes
+2026-02-16 23:44:46,989 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-16 23:44:47,115 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 49770 bytes
+2026-02-16 23:44:48,774 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-16 23:44:48,868 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-16 23:44:49,026 - sqlalchemy.engine.Engine - INFO - [cached since 2.831s ago] [{'id': '8fa2b098-99a1-42df-bc54-a0ad93699064', 'employee_id': 'NV0010', 'embedding': '[0.2685827314853668, -0.007427111268043518, -0.28622686862945557, 0.5130724310874939, -0.1711331605911255, 0.1708822250366211, -0.4490131139755249, 0 ... (10399 characters truncated) ... 012, -0.07266498357057571, 0.21798115968704224, -0.4956768751144409, 0.3606969714164734, 0.9247896075248718, 0.5562247633934021, -0.6135939955711365]'}, {'id': '79408259-50b9-4251-8f51-73aaf1498759', 'employee_id': 'NV0010', 'embedding': '[0.39584797620773315, -0.04440656304359436, -0.5177512168884277, 0.36189359426498413, -0.5238611102104187, 0.6177229285240173, -0.2184699922800064, 0 ... (10370 characters truncated) ... 355, -0.9209651947021484, 0.13975903391838074, -0.9003404378890991, 0.28486716747283936, 0.3356848359107971, 0.6396682858467102, -0.8925763964653015]'}]
+2026-02-16 23:44:49,190 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0010
+2026-02-16 23:44:49,225 - src.service.FaceModelSingleton - DEBUG - Saved 2 embeddings for NV0010
+2026-02-16 23:44:49,267 - src.service.FaceModelSingleton - DEBUG - Processing last employee: NV0011, images: 2
+2026-02-16 23:44:49,277 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0011, images: 2
+2026-02-16 23:44:49,285 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 28382 bytes
+2026-02-16 23:44:49,983 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-16 23:44:50,126 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 28590 bytes
+2026-02-16 23:44:51,184 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-16 23:44:51,206 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-16 23:44:51,249 - sqlalchemy.engine.Engine - INFO - [cached since 5.054s ago] [{'id': '12061036-6b96-44c9-b668-2dc4038a7ac0', 'employee_id': 'NV0011', 'embedding': '[-0.37780076265335083, 1.0929021835327148, -1.3753883838653564, 0.5128543376922607, -0.12633797526359558, -0.7897167205810547, -0.37011954188346863,  ... (10379 characters truncated) ... 6, 0.09362584352493286, -1.1426156759262085, -0.7771059274673462, -1.2505520582199097, 1.7739204168319702, -0.31897473335266113, -0.3044642210006714]'}, {'id': 'b329065a-df8f-4125-9a4c-8ba788877031', 'employee_id': 'NV0011', 'embedding': '[-0.9895186424255371, 0.05075739324092865, -0.9362025856971741, 0.7820054888725281, -0.3446815013885498, 0.024268820881843567, 0.09719967097043991, 0 ... (10384 characters truncated) ... 235, -0.2192046195268631, -0.5630557537078857, -1.1845487356185913, -1.263412594795227, 1.3630887269973755, -0.3642699122428894, -0.3381679952144623]'}]
+2026-02-16 23:44:51,361 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0011
+2026-02-16 23:44:51,367 - src.service.FaceModelSingleton - DEBUG - Saved 2 embeddings for NV0011
+2026-02-16 23:44:51,379 - src.service.FaceModelSingleton - INFO - Batch registration completed: 3 employees, 6 embeddings
+2026-02-16 23:44:51,389 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-02-16 23:44:51,446 - src.controller.FaceRecognitionController - INFO - Batch register completed: {'employees': 3, 'embeddings': 6}
+2026-02-16 23:44:51,447 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-17 08:17:24,669 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-17 08:17:52,168 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-17 08:17:52,169 - python_multipart.multipart - DEBUG - Calling on_header_field with data[44:63]
+2026-02-17 08:17:52,169 - python_multipart.multipart - DEBUG - Calling on_header_value with data[65:120]
+2026-02-17 08:17:52,169 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:17:52,170 - python_multipart.multipart - DEBUG - Calling on_header_field with data[122:134]
+2026-02-17 08:17:52,170 - python_multipart.multipart - DEBUG - Calling on_header_value with data[136:151]
+2026-02-17 08:17:52,171 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:17:52,171 - python_multipart.multipart - DEBUG - Calling on_header_field with data[153:167]
+2026-02-17 08:17:52,171 - python_multipart.multipart - DEBUG - Calling on_header_value with data[169:175]
+2026-02-17 08:17:52,171 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:17:52,171 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-17 08:17:52,172 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:194476]
+2026-02-17 08:17:52,172 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-17 08:17:52,172 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-17 08:17:52,197 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-17 08:17:52,200 - src.controller.FaceRecognitionController - DEBUG - Batch register called with file: faces_batch_real.zip
+2026-02-17 08:17:52,200 - src.service.FaceModelSingleton - DEBUG - Starting batch registration from ZIP file
+2026-02-17 08:17:52,201 - src.service.FaceModelSingleton - DEBUG - ZIP file contains 6 entries
+2026-02-17 08:17:52,202 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0004, images: 2
+2026-02-17 08:17:52,202 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 27127 bytes
+2026-02-17 08:17:53,788 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:17:53,798 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 25740 bytes
+2026-02-17 08:17:55,229 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:17:55,244 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-02-17 08:17:55,295 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:17:55,332 - sqlalchemy.engine.Engine - INFO - [generated in 0.03002s] [{'id': 'c598b877-f961-46e2-aead-a1a8116db178', 'employee_id': 'NV0004', 'embedding': '[0.10222280770540237, -0.5873446464538574, 0.05218347907066345, 0.5840742588043213, -0.12561547756195068, 0.024112433195114136, -0.5436100959777832,  ... (10380 characters truncated) ... 9375, 0.34773242473602295, -0.08190112560987473, -0.5275532603263855, 0.3838738203048706, 0.742713987827301, 0.16696760058403015, 0.1979396641254425]'}, {'id': 'a70e0bba-9e43-4613-87cc-e2ab52263196', 'employee_id': 'NV0004', 'embedding': '[-0.0568789504468441, -0.21007932722568512, -0.6226688027381897, 0.23929652571678162, -0.4056798815727234, 0.0640910416841507, -0.15661929547786713,  ... (10399 characters truncated) ... 747, -0.20242060720920563, 0.13038226962089539, -0.2743154764175415, 0.3958803117275238, 0.4079706072807312, 0.8310103416442871, -0.9062883853912354]'}]
+2026-02-17 08:17:55,367 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0004
+2026-02-17 08:17:55,376 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0010, images: 2
+2026-02-17 08:17:55,383 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 49160 bytes
+2026-02-17 08:17:56,787 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:17:56,801 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 49770 bytes
+2026-02-17 08:17:58,212 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:17:58,224 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:17:58,244 - sqlalchemy.engine.Engine - INFO - [cached since 2.95s ago] [{'id': '0130a54d-9468-4dce-8ef1-9479139c6c68', 'employee_id': 'NV0010', 'embedding': '[0.2685827314853668, -0.007427111268043518, -0.28622686862945557, 0.5130724310874939, -0.1711331605911255, 0.1708822250366211, -0.4490131139755249, 0 ... (10399 characters truncated) ... 012, -0.07266498357057571, 0.21798115968704224, -0.4956768751144409, 0.3606969714164734, 0.9247896075248718, 0.5562247633934021, -0.6135939955711365]'}, {'id': '13d900a1-b3d9-4ab9-894f-34f6541cc2a3', 'employee_id': 'NV0010', 'embedding': '[0.39584797620773315, -0.04440656304359436, -0.5177512168884277, 0.36189359426498413, -0.5238611102104187, 0.6177229285240173, -0.2184699922800064, 0 ... (10370 characters truncated) ... 355, -0.9209651947021484, 0.13975903391838074, -0.9003404378890991, 0.28486716747283936, 0.3356848359107971, 0.6396682858467102, -0.8925763964653015]'}]
+2026-02-17 08:17:58,311 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0010
+2026-02-17 08:17:58,317 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0011, images: 2
+2026-02-17 08:17:58,321 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 28382 bytes
+2026-02-17 08:17:59,698 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:17:59,711 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 28590 bytes
+2026-02-17 08:18:01,282 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:18:01,296 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:18:01,325 - sqlalchemy.engine.Engine - INFO - [cached since 6.031s ago] [{'id': 'c57d872f-e624-4295-91b5-8439a21c11e4', 'employee_id': 'NV0011', 'embedding': '[-0.37780076265335083, 1.0929021835327148, -1.3753883838653564, 0.5128543376922607, -0.12633797526359558, -0.7897167205810547, -0.37011954188346863,  ... (10379 characters truncated) ... 6, 0.09362584352493286, -1.1426156759262085, -0.7771059274673462, -1.2505520582199097, 1.7739204168319702, -0.31897473335266113, -0.3044642210006714]'}, {'id': '0e0745e9-4491-43c3-a998-07f4a41429f2', 'employee_id': 'NV0011', 'embedding': '[-0.9895186424255371, 0.05075739324092865, -0.9362025856971741, 0.7820054888725281, -0.3446815013885498, 0.024268820881843567, 0.09719967097043991, 0 ... (10384 characters truncated) ... 235, -0.2192046195268631, -0.5630557537078857, -1.1845487356185913, -1.263412594795227, 1.3630887269973755, -0.3642699122428894, -0.3381679952144623]'}]
+2026-02-17 08:18:01,399 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0011
+2026-02-17 08:18:01,407 - src.controller.FaceRecognitionController - ERROR - Batch register failed: UploadZipResponse.__init__() got an unexpected keyword argument 'total_failed'
+Traceback (most recent call last):
+  File "C:\project\testFace\facial_recognition_api\src\controller\FaceRecognitionController.py", line 57, in register_face_batch
+    result = batch_service.register_from_zip(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\src\service\FaceModelSingleton.py", line 133, in register_from_zip
+    return  UploadZipResponse(
+            ^^^^^^^^^^^^^^^^^^
+TypeError: UploadZipResponse.__init__() got an unexpected keyword argument 'total_failed'
+2026-02-17 08:18:01,415 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-02-17 08:18:01,452 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-17 08:19:08,301 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-17 08:19:10,646 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-17 08:19:10,646 - python_multipart.multipart - DEBUG - Calling on_header_field with data[38:57]
+2026-02-17 08:19:10,646 - python_multipart.multipart - DEBUG - Calling on_header_value with data[59:114]
+2026-02-17 08:19:10,646 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:19:10,646 - python_multipart.multipart - DEBUG - Calling on_header_field with data[116:128]
+2026-02-17 08:19:10,647 - python_multipart.multipart - DEBUG - Calling on_header_value with data[130:145]
+2026-02-17 08:19:10,647 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:19:10,647 - python_multipart.multipart - DEBUG - Calling on_header_field with data[147:161]
+2026-02-17 08:19:10,647 - python_multipart.multipart - DEBUG - Calling on_header_value with data[163:169]
+2026-02-17 08:19:10,647 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:19:10,648 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-17 08:19:10,648 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:194476]
+2026-02-17 08:19:10,648 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-17 08:19:10,649 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-17 08:19:10,652 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-17 08:19:10,652 - src.controller.FaceRecognitionController - DEBUG - Batch register called with file: faces_batch_real.zip
+2026-02-17 08:19:10,653 - src.service.FaceModelSingleton - DEBUG - Starting batch registration from ZIP file
+2026-02-17 08:19:10,653 - src.service.FaceModelSingleton - DEBUG - ZIP file contains 6 entries
+2026-02-17 08:19:10,653 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0004, images: 2
+2026-02-17 08:19:10,653 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 27127 bytes
+2026-02-17 08:19:11,845 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:19:11,908 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 25740 bytes
+2026-02-17 08:19:12,866 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:19:13,009 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-02-17 08:19:13,293 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:19:13,475 - sqlalchemy.engine.Engine - INFO - [generated in 0.18370s] [{'id': 'b2a126c5-7732-40f1-9da2-ce44de82f348', 'employee_id': 'NV0004', 'embedding': '[0.10222280770540237, -0.5873446464538574, 0.05218347907066345, 0.5840742588043213, -0.12561547756195068, 0.024112433195114136, -0.5436100959777832,  ... (10380 characters truncated) ... 9375, 0.34773242473602295, -0.08190112560987473, -0.5275532603263855, 0.3838738203048706, 0.742713987827301, 0.16696760058403015, 0.1979396641254425]'}, {'id': '0652c668-8fb6-4dc2-af04-32d5cc4df516', 'employee_id': 'NV0004', 'embedding': '[-0.0568789504468441, -0.21007932722568512, -0.6226688027381897, 0.23929652571678162, -0.4056798815727234, 0.0640910416841507, -0.15661929547786713,  ... (10399 characters truncated) ... 747, -0.20242060720920563, 0.13038226962089539, -0.2743154764175415, 0.3958803117275238, 0.4079706072807312, 0.8310103416442871, -0.9062883853912354]'}]
+2026-02-17 08:19:13,622 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0004
+2026-02-17 08:19:13,661 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0010, images: 2
+2026-02-17 08:19:13,730 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 49160 bytes
+2026-02-17 08:19:15,253 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:19:15,316 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 49770 bytes
+2026-02-17 08:19:16,532 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:19:16,658 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:19:16,777 - sqlalchemy.engine.Engine - INFO - [cached since 3.484s ago] [{'id': '5f45c0cb-a398-48a8-821a-14e72b0f83bc', 'employee_id': 'NV0010', 'embedding': '[0.2685827314853668, -0.007427111268043518, -0.28622686862945557, 0.5130724310874939, -0.1711331605911255, 0.1708822250366211, -0.4490131139755249, 0 ... (10399 characters truncated) ... 012, -0.07266498357057571, 0.21798115968704224, -0.4956768751144409, 0.3606969714164734, 0.9247896075248718, 0.5562247633934021, -0.6135939955711365]'}, {'id': '017c1990-4e31-462c-b333-4c8aa90d0a11', 'employee_id': 'NV0010', 'embedding': '[0.39584797620773315, -0.04440656304359436, -0.5177512168884277, 0.36189359426498413, -0.5238611102104187, 0.6177229285240173, -0.2184699922800064, 0 ... (10370 characters truncated) ... 355, -0.9209651947021484, 0.13975903391838074, -0.9003404378890991, 0.28486716747283936, 0.3356848359107971, 0.6396682858467102, -0.8925763964653015]'}]
+2026-02-17 08:19:16,899 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0010
+2026-02-17 08:19:16,900 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0011, images: 2
+2026-02-17 08:19:16,900 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 28382 bytes
+2026-02-17 08:19:17,490 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:19:17,619 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 28590 bytes
+2026-02-17 08:19:18,823 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:19:18,970 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:19:19,210 - sqlalchemy.engine.Engine - INFO - [cached since 5.918s ago] [{'id': 'c2653bf1-f0e3-4739-a1a9-6234b722bb5e', 'employee_id': 'NV0011', 'embedding': '[-0.37780076265335083, 1.0929021835327148, -1.3753883838653564, 0.5128543376922607, -0.12633797526359558, -0.7897167205810547, -0.37011954188346863,  ... (10379 characters truncated) ... 6, 0.09362584352493286, -1.1426156759262085, -0.7771059274673462, -1.2505520582199097, 1.7739204168319702, -0.31897473335266113, -0.3044642210006714]'}, {'id': '4e835c34-f99d-4d74-9627-a2d1cfc9da11', 'employee_id': 'NV0011', 'embedding': '[-0.9895186424255371, 0.05075739324092865, -0.9362025856971741, 0.7820054888725281, -0.3446815013885498, 0.024268820881843567, 0.09719967097043991, 0 ... (10384 characters truncated) ... 235, -0.2192046195268631, -0.5630557537078857, -1.1845487356185913, -1.263412594795227, 1.3630887269973755, -0.3642699122428894, -0.3381679952144623]'}]
+2026-02-17 08:19:19,315 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0011
+2026-02-17 08:19:19,316 - src.controller.FaceRecognitionController - ERROR - Batch register failed: UploadZipResponse.__init__() got an unexpected keyword argument 'total_failed'
+Traceback (most recent call last):
+  File "C:\project\testFace\facial_recognition_api\src\controller\FaceRecognitionController.py", line 57, in register_face_batch
+    result = batch_service.register_from_zip(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\project\testFace\facial_recognition_api\src\service\FaceModelSingleton.py", line 133, in register_from_zip
+    return  UploadZipResponse(
+            ^^^^^^^^^^^^^^^^^^
+TypeError: UploadZipResponse.__init__() got an unexpected keyword argument 'total_failed'
+2026-02-17 08:19:19,317 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-02-17 08:19:19,324 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-17 08:21:11,226 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-02-17 08:21:14,366 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-17 08:21:14,367 - python_multipart.multipart - DEBUG - Calling on_header_field with data[44:63]
+2026-02-17 08:21:14,367 - python_multipart.multipart - DEBUG - Calling on_header_value with data[65:120]
+2026-02-17 08:21:14,367 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:21:14,367 - python_multipart.multipart - DEBUG - Calling on_header_field with data[122:134]
+2026-02-17 08:21:14,367 - python_multipart.multipart - DEBUG - Calling on_header_value with data[136:151]
+2026-02-17 08:21:14,367 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:21:14,368 - python_multipart.multipart - DEBUG - Calling on_header_field with data[153:167]
+2026-02-17 08:21:14,368 - python_multipart.multipart - DEBUG - Calling on_header_value with data[169:175]
+2026-02-17 08:21:14,368 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:21:14,368 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-17 08:21:14,368 - python_multipart.multipart - DEBUG - Calling on_part_data with data[179:131250]
+2026-02-17 08:21:14,369 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:63405]
+2026-02-17 08:21:14,369 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-17 08:21:14,369 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-17 08:21:14,374 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-17 08:21:14,374 - src.controller.FaceRecognitionController - DEBUG - Batch register called with file: faces_batch_real.zip
+2026-02-17 08:21:14,375 - src.service.FaceModelSingleton - DEBUG - Starting batch registration from ZIP file
+2026-02-17 08:21:14,375 - src.service.FaceModelSingleton - DEBUG - ZIP file contains 6 entries
+2026-02-17 08:21:14,375 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0004, images: 2
+2026-02-17 08:21:14,375 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 27127 bytes
+2026-02-17 08:21:15,590 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:21:15,602 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 25740 bytes
+2026-02-17 08:21:16,719 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:21:16,730 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-02-17 08:21:16,757 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:21:16,777 - sqlalchemy.engine.Engine - INFO - [generated in 0.02616s] [{'id': 'd6a42284-25d3-4b0c-9918-9871379aca53', 'employee_id': 'NV0004', 'embedding': '[0.10222280770540237, -0.5873446464538574, 0.05218347907066345, 0.5840742588043213, -0.12561547756195068, 0.024112433195114136, -0.5436100959777832,  ... (10380 characters truncated) ... 9375, 0.34773242473602295, -0.08190112560987473, -0.5275532603263855, 0.3838738203048706, 0.742713987827301, 0.16696760058403015, 0.1979396641254425]'}, {'id': '80648c5e-2371-4c2b-acef-b7d2d9995d65', 'employee_id': 'NV0004', 'embedding': '[-0.0568789504468441, -0.21007932722568512, -0.6226688027381897, 0.23929652571678162, -0.4056798815727234, 0.0640910416841507, -0.15661929547786713,  ... (10399 characters truncated) ... 747, -0.20242060720920563, 0.13038226962089539, -0.2743154764175415, 0.3958803117275238, 0.4079706072807312, 0.8310103416442871, -0.9062883853912354]'}]
+2026-02-17 08:21:16,798 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0004
+2026-02-17 08:21:16,806 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0010, images: 2
+2026-02-17 08:21:16,812 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 49160 bytes
+2026-02-17 08:21:18,158 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:21:18,308 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 49770 bytes
+2026-02-17 08:21:19,379 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:21:19,508 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:21:19,758 - sqlalchemy.engine.Engine - INFO - [cached since 3.007s ago] [{'id': 'a79be97e-d536-4991-bbf5-20de39fae1c6', 'employee_id': 'NV0010', 'embedding': '[0.2685827314853668, -0.007427111268043518, -0.28622686862945557, 0.5130724310874939, -0.1711331605911255, 0.1708822250366211, -0.4490131139755249, 0 ... (10399 characters truncated) ... 012, -0.07266498357057571, 0.21798115968704224, -0.4956768751144409, 0.3606969714164734, 0.9247896075248718, 0.5562247633934021, -0.6135939955711365]'}, {'id': '175db612-8387-4055-819e-5835ef014227', 'employee_id': 'NV0010', 'embedding': '[0.39584797620773315, -0.04440656304359436, -0.5177512168884277, 0.36189359426498413, -0.5238611102104187, 0.6177229285240173, -0.2184699922800064, 0 ... (10370 characters truncated) ... 355, -0.9209651947021484, 0.13975903391838074, -0.9003404378890991, 0.28486716747283936, 0.3356848359107971, 0.6396682858467102, -0.8925763964653015]'}]
+2026-02-17 08:21:20,011 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0010
+2026-02-17 08:21:20,031 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0011, images: 2
+2026-02-17 08:21:20,042 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 28382 bytes
+2026-02-17 08:21:21,026 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:21:21,125 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 28590 bytes
+2026-02-17 08:21:22,256 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:21:22,390 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:21:22,610 - sqlalchemy.engine.Engine - INFO - [cached since 5.86s ago] [{'id': '917fbb49-e651-4564-bbca-b39c10c8edd7', 'employee_id': 'NV0011', 'embedding': '[-0.37780076265335083, 1.0929021835327148, -1.3753883838653564, 0.5128543376922607, -0.12633797526359558, -0.7897167205810547, -0.37011954188346863,  ... (10379 characters truncated) ... 6, 0.09362584352493286, -1.1426156759262085, -0.7771059274673462, -1.2505520582199097, 1.7739204168319702, -0.31897473335266113, -0.3044642210006714]'}, {'id': '9a75465c-b426-4025-82f0-7418dfe27f33', 'employee_id': 'NV0011', 'embedding': '[-0.9895186424255371, 0.05075739324092865, -0.9362025856971741, 0.7820054888725281, -0.3446815013885498, 0.024268820881843567, 0.09719967097043991, 0 ... (10384 characters truncated) ... 235, -0.2192046195268631, -0.5630557537078857, -1.1845487356185913, -1.263412594795227, 1.3630887269973755, -0.3642699122428894, -0.3381679952144623]'}]
+2026-02-17 08:21:22,855 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0011
+2026-02-17 08:21:22,884 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-02-17 08:21:22,950 - src.controller.FaceRecognitionController - INFO - Batch register completed: <src.dto.response.zip_up_load_response.UploadZipResponse object at 0x000001C0A64ECED0>
+2026-02-17 08:21:22,951 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-17 08:22:39,989 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2026-02-17 08:22:39,989 - python_multipart.multipart - DEBUG - Calling on_header_field with data[37:56]
+2026-02-17 08:22:39,990 - python_multipart.multipart - DEBUG - Calling on_header_value with data[58:114]
+2026-02-17 08:22:39,990 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:22:39,990 - python_multipart.multipart - DEBUG - Calling on_header_field with data[116:128]
+2026-02-17 08:22:39,991 - python_multipart.multipart - DEBUG - Calling on_header_value with data[130:145]
+2026-02-17 08:22:39,991 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:22:39,991 - python_multipart.multipart - DEBUG - Calling on_header_field with data[147:161]
+2026-02-17 08:22:39,991 - python_multipart.multipart - DEBUG - Calling on_header_value with data[163:169]
+2026-02-17 08:22:39,991 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2026-02-17 08:22:39,992 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2026-02-17 08:22:39,992 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:195656]
+2026-02-17 08:22:39,992 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2026-02-17 08:22:39,992 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2026-02-17 08:22:39,993 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-17 08:22:39,994 - src.controller.FaceRecognitionController - DEBUG - Batch register called with file: faces_batch_real1.zip
+2026-02-17 08:22:39,994 - src.service.FaceModelSingleton - DEBUG - Starting batch registration from ZIP file
+2026-02-17 08:22:39,995 - src.service.FaceModelSingleton - DEBUG - ZIP file contains 13 entries
+2026-02-17 08:22:39,995 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0004, images: 2
+2026-02-17 08:22:39,995 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 27127 bytes
+2026-02-17 08:22:40,808 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:22:40,876 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 25740 bytes
+2026-02-17 08:22:41,840 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:22:41,890 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-02-17 08:22:41,981 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:22:42,070 - sqlalchemy.engine.Engine - INFO - [cached since 85.32s ago] [{'id': '46087d2c-8491-4733-82c5-40708c5e3022', 'employee_id': 'NV0004', 'embedding': '[0.10222280770540237, -0.5873446464538574, 0.05218347907066345, 0.5840742588043213, -0.12561547756195068, 0.024112433195114136, -0.5436100959777832,  ... (10380 characters truncated) ... 9375, 0.34773242473602295, -0.08190112560987473, -0.5275532603263855, 0.3838738203048706, 0.742713987827301, 0.16696760058403015, 0.1979396641254425]'}, {'id': '7177ccd4-2291-416c-a9eb-f8b19d8ede46', 'employee_id': 'NV0004', 'embedding': '[-0.0568789504468441, -0.21007932722568512, -0.6226688027381897, 0.23929652571678162, -0.4056798815727234, 0.0640910416841507, -0.15661929547786713,  ... (10399 characters truncated) ... 747, -0.20242060720920563, 0.13038226962089539, -0.2743154764175415, 0.3958803117275238, 0.4079706072807312, 0.8310103416442871, -0.9062883853912354]'}]
+2026-02-17 08:22:42,234 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0004
+2026-02-17 08:22:42,249 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0010, images: 2
+2026-02-17 08:22:42,262 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 49160 bytes
+2026-02-17 08:22:43,064 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:22:43,140 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 49770 bytes
+2026-02-17 08:22:44,192 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:22:44,242 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:22:44,346 - sqlalchemy.engine.Engine - INFO - [cached since 87.59s ago] [{'id': '189036c9-db2a-4e7a-9432-b9731bf86195', 'employee_id': 'NV0010', 'embedding': '[0.2685827314853668, -0.007427111268043518, -0.28622686862945557, 0.5130724310874939, -0.1711331605911255, 0.1708822250366211, -0.4490131139755249, 0 ... (10399 characters truncated) ... 012, -0.07266498357057571, 0.21798115968704224, -0.4956768751144409, 0.3606969714164734, 0.9247896075248718, 0.5562247633934021, -0.6135939955711365]'}, {'id': '6651396d-d7a6-45c8-b571-2f7442b48ba7', 'employee_id': 'NV0010', 'embedding': '[0.39584797620773315, -0.04440656304359436, -0.5177512168884277, 0.36189359426498413, -0.5238611102104187, 0.6177229285240173, -0.2184699922800064, 0 ... (10370 characters truncated) ... 355, -0.9209651947021484, 0.13975903391838074, -0.9003404378890991, 0.28486716747283936, 0.3356848359107971, 0.6396682858467102, -0.8925763964653015]'}]
+2026-02-17 08:22:44,554 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0010
+2026-02-17 08:22:44,586 - src.service.FaceRecognitionService - DEBUG - Registering embeddings for employee_id: NV0011, images: 2
+2026-02-17 08:22:44,624 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 28382 bytes
+2026-02-17 08:22:45,730 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:22:45,794 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 28590 bytes
+2026-02-17 08:22:46,782 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:22:46,830 - sqlalchemy.engine.Engine - INFO - INSERT INTO face_embeddings (id, employee_id, embedding) VALUES (%(id)s, %(employee_id)s, %(embedding)s)
+2026-02-17 08:22:46,935 - sqlalchemy.engine.Engine - INFO - [cached since 90.18s ago] [{'id': 'e55e5b7b-ce11-43d6-8bb0-a1f87070b802', 'employee_id': 'NV0011', 'embedding': '[-0.37780076265335083, 1.0929021835327148, -1.3753883838653564, 0.5128543376922607, -0.12633797526359558, -0.7897167205810547, -0.37011954188346863,  ... (10379 characters truncated) ... 6, 0.09362584352493286, -1.1426156759262085, -0.7771059274673462, -1.2505520582199097, 1.7739204168319702, -0.31897473335266113, -0.3044642210006714]'}, {'id': '36eaf47b-8c44-462b-8abc-d8a701569897', 'employee_id': 'NV0011', 'embedding': '[-0.9895186424255371, 0.05075739324092865, -0.9362025856971741, 0.7820054888725281, -0.3446815013885498, 0.024268820881843567, 0.09719967097043991, 0 ... (10384 characters truncated) ... 235, -0.2192046195268631, -0.5630557537078857, -1.1845487356185913, -1.263412594795227, 1.3630887269973755, -0.3642699122428894, -0.3381679952144623]'}]
+2026-02-17 08:22:47,120 - src.service.FaceRecognitionService - DEBUG - Saved 2 embeddings for employee_id: NV0011
+2026-02-17 08:22:47,138 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-02-17 08:22:47,233 - src.controller.FaceRecognitionController - INFO - Batch register completed: <src.dto.response.zip_up_load_response.UploadZipResponse object at 0x000001C0A64B3F50>
+2026-02-17 08:22:47,246 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-17 08:24:35,749 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-17 08:24:35,750 - src.controller.FaceRecognitionController - DEBUG - Face recognition called
+2026-02-17 08:24:35,751 - src.service.FaceRecognitionService - DEBUG - Starting face recognition with threshold: 0.6
+2026-02-17 08:24:35,751 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 17634 bytes
+2026-02-17 08:24:36,489 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:24:36,566 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-02-17 08:24:36,704 - sqlalchemy.engine.Engine - INFO - SELECT face_embeddings.employee_id AS face_embeddings_employee_id, face_embeddings.embedding AS face_embeddings_embedding 
+FROM face_embeddings
+2026-02-17 08:24:36,813 - sqlalchemy.engine.Engine - INFO - [generated in 0.10886s] {}
+2026-02-17 08:24:36,912 - src.service.FaceRecognitionService - DEBUG - Compared against 18 embeddings, best score: 0.9888564019994385
+2026-02-17 08:24:36,946 - src.service.FaceRecognitionService - INFO - Recognition successful: employee_id NV0004, score 0.9888564019994385
+2026-02-17 08:24:36,976 - src.controller.FaceRecognitionController - INFO - Face recognition: Matched employee_id: NV0004
+2026-02-17 08:24:37,023 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-17 08:24:37,035 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-02-17 08:25:43,371 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-17 08:25:43,372 - src.controller.FaceRecognitionController - DEBUG - Face recognition called
+2026-02-17 08:25:43,372 - src.service.FaceRecognitionService - DEBUG - Starting face recognition with threshold: 0.6
+2026-02-17 08:25:43,373 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 26769 bytes
+2026-02-17 08:25:44,468 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:25:44,482 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-02-17 08:25:44,511 - sqlalchemy.engine.Engine - INFO - SELECT face_embeddings.employee_id AS face_embeddings_employee_id, face_embeddings.embedding AS face_embeddings_embedding 
+FROM face_embeddings
+2026-02-17 08:25:44,539 - sqlalchemy.engine.Engine - INFO - [cached since 67.84s ago] {}
+2026-02-17 08:25:44,584 - src.service.FaceRecognitionService - DEBUG - Compared against 18 embeddings, best score: 0.987247569630773
+2026-02-17 08:25:44,597 - src.service.FaceRecognitionService - INFO - Recognition successful: employee_id NV0010, score 0.987247569630773
+2026-02-17 08:25:44,611 - src.controller.FaceRecognitionController - INFO - Face recognition: Matched employee_id: NV0010
+2026-02-17 08:25:44,632 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-17 08:25:44,640 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-02-17 08:25:47,567 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-17 08:25:47,567 - src.controller.FaceRecognitionController - DEBUG - Face recognition called
+2026-02-17 08:25:47,567 - src.service.FaceRecognitionService - DEBUG - Starting face recognition with threshold: 0.6
+2026-02-17 08:25:47,568 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 26769 bytes
+2026-02-17 08:25:48,344 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:25:48,357 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-02-17 08:25:48,385 - sqlalchemy.engine.Engine - INFO - SELECT face_embeddings.employee_id AS face_embeddings_employee_id, face_embeddings.embedding AS face_embeddings_embedding 
+FROM face_embeddings
+2026-02-17 08:25:48,418 - sqlalchemy.engine.Engine - INFO - [cached since 71.71s ago] {}
+2026-02-17 08:25:48,476 - src.service.FaceRecognitionService - DEBUG - Compared against 18 embeddings, best score: 0.987247569630773
+2026-02-17 08:25:48,493 - src.service.FaceRecognitionService - INFO - Recognition successful: employee_id NV0010, score 0.987247569630773
+2026-02-17 08:25:48,541 - src.controller.FaceRecognitionController - INFO - Face recognition: Matched employee_id: NV0010
+2026-02-17 08:25:48,586 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-17 08:25:48,594 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-02-17 08:26:05,863 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-17 08:26:05,863 - src.controller.FaceRecognitionController - DEBUG - Face recognition called
+2026-02-17 08:26:05,863 - src.service.FaceRecognitionService - DEBUG - Starting face recognition with threshold: 0.6
+2026-02-17 08:26:05,864 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 18201 bytes
+2026-02-17 08:26:06,942 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:26:06,956 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-02-17 08:26:06,982 - sqlalchemy.engine.Engine - INFO - SELECT face_embeddings.employee_id AS face_embeddings_employee_id, face_embeddings.embedding AS face_embeddings_embedding 
+FROM face_embeddings
+2026-02-17 08:26:07,005 - sqlalchemy.engine.Engine - INFO - [cached since 90.3s ago] {}
+2026-02-17 08:26:07,070 - src.service.FaceRecognitionService - DEBUG - Compared against 18 embeddings, best score: 0.9793090805675092
+2026-02-17 08:26:07,082 - src.service.FaceRecognitionService - INFO - Recognition successful: employee_id NV0011, score 0.9793090805675092
+2026-02-17 08:26:07,097 - src.controller.FaceRecognitionController - INFO - Face recognition: Matched employee_id: NV0011
+2026-02-17 08:26:07,120 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-17 08:26:07,127 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-02-17 08:26:14,452 - src.db_config.mysqlDb - DEBUG - Creating database session
+2026-02-17 08:26:14,453 - src.controller.FaceRecognitionController - DEBUG - Face recognition called
+2026-02-17 08:26:14,453 - src.service.FaceRecognitionService - DEBUG - Starting face recognition with threshold: 0.6
+2026-02-17 08:26:14,453 - src.service.FaceRecognitionService - DEBUG - Extracting embedding from image of size: 18201 bytes
+2026-02-17 08:26:15,468 - src.service.FaceRecognitionService - DEBUG - Face detected, embedding shape: (512,)
+2026-02-17 08:26:15,481 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-02-17 08:26:15,509 - sqlalchemy.engine.Engine - INFO - SELECT face_embeddings.employee_id AS face_embeddings_employee_id, face_embeddings.embedding AS face_embeddings_embedding 
+FROM face_embeddings
+2026-02-17 08:26:15,536 - sqlalchemy.engine.Engine - INFO - [cached since 98.83s ago] {}
+2026-02-17 08:26:15,586 - src.service.FaceRecognitionService - DEBUG - Compared against 18 embeddings, best score: 0.9793090805675092
+2026-02-17 08:26:15,597 - src.service.FaceRecognitionService - INFO - Recognition successful: employee_id NV0011, score 0.9793090805675092
+2026-02-17 08:26:15,610 - src.controller.FaceRecognitionController - INFO - Face recognition: Matched employee_id: NV0011
+2026-02-17 08:26:15,632 - src.db_config.mysqlDb - DEBUG - Closing database session
+2026-02-17 08:26:15,648 - sqlalchemy.engine.Engine - INFO - ROLLBACK
