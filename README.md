@@ -784,11 +784,11 @@ All logs are written to:
 
 ## 👨‍💻 Author
 
-**Developed by:** Your Engineering Team
+**Developed by:** trọng
 
-**Contact:** dev-team@yourcompany.com
+**Contact:** tn061350951@gmail.com
 
-**Repository:** https://github.com/your-org/facial_recognition_api
+**Repository:** https://github.com/TRONGG2005k/facial_recognition_api
 
 ---
 
