@@ -1,11 +1,10 @@
-# 🎯 HRM Face Recognition Service
+# 🔍 HRM Face Recognition Service
 
 > **AI-Powered Facial Recognition Microservice for Employee Attendance Management**
 
-[![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat&logo=python)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-009688?style=flat&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=flat&logo=docker)](https://www.docker.com/)
-[![InsightFace](https://img.shields.io/badge/InsightFace-AI%20Model-orange?style=flat)](https://github.com/deepinsight/insightface)
+[![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-00a393?logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ed?logo=docker)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
@@ -13,254 +12,272 @@
 ## 📋 Table of Contents
 
 - [Project Overview](#-project-overview)
-- [Service Architecture](#-service-architecture)
+- [Service Responsibility](#-service-responsibility)
+- [Recognition Workflow](#-recognition-workflow)
 - [Technology Stack](#-technology-stack)
-- [Face Recognition Workflow](#-face-recognition-workflow)
-- [API Endpoints](#-api-endpoints)
-- [Request & Response Examples](#-request--response-examples)
-- [Integration with Backend](#-integration-with-backend)
-- [Image Processing Pipeline](#-image-processing-pipeline)
-- [Project Structure](#-project-structure)
-- [Environment Configuration](#-environment-configuration)
+- [API Communication Flow](#-api-communication-flow)
+- [Request/Response Example](#-requestresponse-example)
+- [System Integration](#-system-integration)
+- [Deployment Overview](#-deployment-overview)
 - [Running Locally](#-running-locally)
-- [Docker Deployment](#-docker-deployment)
-- [Performance Considerations](#-performance-considerations)
-- [Error Handling Strategy](#-error-handling-strategy)
+- [Docker Setup](#-docker-setup)
 - [Future Improvements](#-future-improvements)
 - [Author](#-author)
 
 ---
 
-## 🚀 Project Overview
+## 🎯 Project Overview
 
-The **HRM Face Recognition Service** is a production-grade AI microservice that performs real-time facial recognition for employee attendance verification. Built with Python and FastAPI, this service seamlessly integrates with a Spring Boot backend to provide secure, accurate, and fast identity verification capabilities.
+The **HRM Face Recognition Service** is a specialized Python-based microservice that provides intelligent facial recognition capabilities for employee attendance verification. As a core component of the distributed HRM Attendance Management System, this service handles the computationally intensive task of face matching while operating as an independent, scalable server.
 
-### Key Features
+### Key Characteristics
 
-| Feature | Description |
-|---------|-------------|
-| 🔍 **Real-time Recognition** | Sub-second face detection and identity matching |
-| 📦 **Batch Registration** | Bulk employee face enrollment via ZIP uploads |
-| 🔄 **CRUD Operations** | Full lifecycle management for face embeddings |
-| 🗄️ **Persistent Storage** | MySQL-backed embedding storage with SQLAlchemy ORM |
-| 🐳 **Containerized** | Docker-ready for seamless deployment |
-| 📊 **High Accuracy** | Powered by InsightFace's buffalo_l model |
+| Aspect | Description |
+|--------|-------------|
+| **Architecture** | Microservice - decoupled from main backend |
+| **Communication** | REST API with Spring Boot backend |
+| **Core Function** | Face detection, embedding extraction, and similarity matching |
+| **Deployment** | Containerized with Docker |
 
 ---
 
-## 🏗️ Service Architecture
+## 🛡️ Service Responsibility
+
+This microservice is designed with a **single responsibility principle**: perform facial recognition and return match results. The main backend retains full control over business logic decisions.
+
+### What This Service Does ✅
+
+- **Face Detection**: Identifies human faces within provided images
+- **Feature Extraction**: Generates high-dimensional face embeddings using deep learning models
+- **Face Matching**: Compares captured faces against registered employee embeddings
+- **CRUD Operations**: Manage employee face embeddings (register, update, delete)
+- **Result Reporting**: Returns verification results to the backend
+
+### What This Service Does NOT Do ❌
+
+- ❌ Make attendance decisions (handled by Spring Boot backend)
+- ❌ Store employee personal information
+- ❌ Manage attendance records
+- ❌ Handle authentication/authorization logic
+
+---
+
+## 🔄 Recognition Workflow
+
+The facial recognition process follows a standardized pipeline from image capture to result delivery:
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         HRM Attendance System                               │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  ┌─────────────────┐      REST API      ┌─────────────────────────┐        │
-│  │                 │ ◄────────────────► │   Face Recognition      │        │
-│  │  Spring Boot    │    (JSON/Base64)   │      Microservice       │        │
-│  │    Backend      │                    │   ┌─────────────────┐   │        │
-│  │                 │◄──────────────────►│   │  FastAPI App    │   │        │
-│  │                 │   Verification     │   │  ┌───────────┐  │   │        │
-│  └─────────────────┘     Results        │   │  │InsightFace│  │   │        │
-│           │                              │   │  │  Model    │  │   │        │
-│           ▼                              │   │  └───────────┘  │   │        │
-│  ┌─────────────────┐                     │   └─────────────────┘   │        │
-│  │   Frontend      │                     │            │              │        │
-│  │   (Web/Mobile)  │                     │            ▼              │        │
-│  └─────────────────┘                     │   ┌─────────────────┐   │        │
-│                                          │   │   MySQL DB      │   │        │
-│                                          │   │ (Embeddings)    │   │        │
-│                                          │   └─────────────────┘   │        │
-│                                          └─────────────────────────┘        │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         RECOGNITION WORKFLOW                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+  ┌──────────────┐         ┌──────────────────┐         ┌──────────────┐
+  │   Capture    │         │   Spring Boot    │         │   Face Rec   │
+  │   Device     │────────▶│     Backend      │────────▶│  Microservice│
+  │  (Camera)    │         │                  │         │              │
+  └──────────────┘         └──────────────────┘         └──────┬───────┘
+                                                               │
+                                                               ▼
+                                                    ┌──────────────────────┐
+                                                    │  1. Decode Base64    │
+                                                    │     Image            │
+                                                    └──────────┬───────────┘
+                                                               ▼
+                                                    ┌──────────────────────┐
+                                                    │  2. Face Detection   │
+                                                    │     (InsightFace)    │
+                                                    └──────────┬───────────┘
+                                                               ▼
+                                                    ┌──────────────────────┐
+                                                    │  3. Embedding        │
+                                                    │     Extraction       │
+                                                    └──────────┬───────────┘
+                                                               ▼
+                                                    ┌──────────────────────┐
+                                                    │  4. Cosine Similarity│
+                                                    │     Comparison       │
+                                                    └──────────┬───────────┘
+                                                               ▼
+                                                    ┌──────────────────────┐
+                                                    │  5. Threshold-based  │
+                                                    │     Match Decision   │
+                                                    └──────────┬───────────┘
+                                                               │
+                                                               ▼
+  ┌──────────────┐         ┌──────────────────┐         ┌──────────────┐
+  │   Attendance │         │   Spring Boot    │◀────────│   Return     │
+  │   Record     │◀────────│     Backend      │         │   Result     │
+  │   Updated    │         │  (Decision Maker)│         │              │
+  └──────────────┘         └──────────────────┘         └──────────────┘
 ```
 
-### Architecture Principles
+### Workflow Steps
 
-- **Stateless Design**: No session state stored in the service
-- **Horizontal Scalability**: Can be replicated behind a load balancer
-- **Event-Driven Communication**: RESTful API for synchronous operations
-- **Database Per Service**: Dedicated MySQL instance for embeddings
-- **Fail-Fast**: Immediate error reporting with detailed logging
+| Step | Process | Description |
+|------|---------|-------------|
+| 1 | **Image Reception** | Receives Base64-encoded image from backend |
+| 2 | **Decoding** | Converts Base64 string to binary image data |
+| 3 | **Face Detection** | Uses InsightFace to locate faces in the image |
+| 4 | **Embedding Extraction** | Generates 512-dimensional feature vector |
+| 5 | **Database Query** | Retrieves all registered embeddings from MySQL |
+| 6 | **Similarity Calculation** | Computes cosine similarity against all records |
+| 7 | **Match Determination** | Returns best match if similarity ≥ threshold (0.6) |
 
 ---
 
 ## 🛠️ Technology Stack
 
-### Core Framework
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **Python** | 3.11+ | Runtime environment |
-| **FastAPI** | Latest | High-performance web framework |
-| **Uvicorn** | Latest | ASGI server with HTTP/2 support |
-| **Pydantic** | Latest | Data validation and serialization |
+### Core Technologies
 
-### AI/ML Stack
-| Technology | Purpose |
-|------------|---------|
-| **InsightFace** | Deep learning face analysis library |
-| **ONNX Runtime** | Optimized model inference |
-| **OpenCV** | Image preprocessing and manipulation |
-| **NumPy** | Numerical computations |
+| Category | Technology | Purpose |
+|----------|------------|---------|
+| **Framework** | FastAPI | High-performance async web framework |
+| **Language** | Python 3.11 | Primary development language |
+| **ML/AI** | InsightFace | State-of-the-art face analysis library |
+| **Runtime** | ONNX Runtime | Optimized deep learning inference |
+| **Computer Vision** | OpenCV | Image processing and manipulation |
 
-### Data Layer
-| Technology | Purpose |
-|------------|---------|
-| **SQLAlchemy 2.0** | Modern ORM for database operations |
-| **PyMySQL** | MySQL database driver |
-| **MySQL 8.0+** | Relational database for embeddings |
+### Database & Storage
 
-### DevOps
-| Technology | Purpose |
-|------------|---------|
-| **Docker** | Containerization |
-| **Docker Compose** | Multi-service orchestration |
-| **AWS EC2** | Cloud deployment target |
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Database** | MySQL | Persistent storage for face embeddings |
+| **ORM** | SQLAlchemy 2.0 | Database abstraction layer |
+| **Driver** | PyMySQL | MySQL database connectivity |
 
----
+### Infrastructure
 
-## 🔄 Face Recognition Workflow
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Server** | Uvicorn | ASGI server for production |
+| **Container** | Docker | Application containerization |
+| **Base Image** | Python 3.11-slim | Minimal Python runtime |
 
-### 1. Employee Registration Flow
+### Python Dependencies
 
 ```
-┌─────────┐    ┌─────────────┐    ┌─────────────────┐    ┌──────────────┐
-│  Admin  │───►│   Upload    │───►│  Extract Faces  │───►│  Generate    │
-│  Portal │    │   Images    │    │   from Photos   │    │ Embeddings   │
-└─────────┘    └─────────────┘    └─────────────────┘    └──────┬───────┘
-                                                                 │
-                    ┌──────────────┐    ┌─────────────┐         │
-                    │  Employee    │◄───│   Store in  │◄────────┘
-                    │  Registered  │    │   Database  │
-                    └──────────────┘    └─────────────┘
-```
-
-### 2. Attendance Verification Flow
-
-```
-┌─────────┐    ┌─────────────┐    ┌─────────────────┐    ┌──────────────┐
-│ Employee│───►│   Capture   │───►│  Detect Face    │───►│   Extract    │
-│ Check-in│    │   Photo     │    │   in Image      │    │  Embedding   │
-└─────────┘    └─────────────┘    └─────────────────┘    └──────┬───────┘
-                                                                 │
-                    ┌──────────────┐    ┌─────────────┐         │
-                    │  Attendance  │◄───│   Compare   │◄────────┘
-                    │   Recorded   │    │  with DB    │
-                    └──────────────┘    └─────────────┘
+fastapi                    # Web framework
+uvicorn[standard]          # ASGI server
+numpy                      # Numerical computations
+opencv-python-headless     # Computer vision
+pillow                     # Image processing
+python-multipart           # File upload support
+insightface                # Face recognition engine
+onnxruntime                # ML model inference
+SQLAlchemy==2.0.44         # ORM
+PyMySQL==1.1.2             # MySQL driver
+cryptography               # Security utilities
 ```
 
 ---
 
-## 🔌 API Endpoints
+## 🌐 API Communication Flow
+
+The microservice exposes RESTful endpoints under the `/facial-recognition` prefix.
 
 ### Base URL
+
 ```
-http://localhost:8000/facial-recognition
+http://<service-host>:8000/facial-recognition
 ```
 
 ### Endpoints Overview
 
-| Method | Endpoint | Description | Request Type |
-|--------|----------|-------------|--------------|
-| `GET` | `/hello` | Health check endpoint | - |
-| `POST` | `/register-face` | Register single employee faces | JSON (Base64) |
-| `POST` | `/register-face-batch` | Bulk register via ZIP upload | Multipart |
-| `POST` | `/face-recognition` | Recognize face from image | JSON (Base64) |
-| `PUT` | `/update-face` | Update employee face data | JSON (Base64) |
-| `DELETE` | `/delete-face` | Remove employee embeddings | JSON |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/hello` | Health check endpoint |
+| `POST` | `/register-face` | Register single employee with face images |
+| `POST` | `/register-face-batch` | Bulk register via ZIP upload |
+| `POST` | `/face-recognition` | Perform face recognition |
+| `PUT` | `/update-face` | Update employee face embeddings |
+| `DELETE` | `/delete-face` | Remove employee face data |
 
-### Detailed Endpoint Specifications
+### Communication Sequence
 
-#### 1. Health Check
-```http
-GET /facial-recognition/hello
 ```
-**Response:**
-```json
-{
-  "message": "Hello world"
-}
+Spring Boot Backend                          Face Recognition Service
+        │                                              │
+        │───────── POST /face-recognition ────────────▶│
+        │         { "image": "base64_encoded" }        │
+        │                                              │
+        │                                              │──▶ Process image
+        │                                              │──▶ Extract embedding
+        │                                              │──▶ Compare with DB
+        │                                              │
+        │◀─────────── JSON Response ───────────────────│
+        │         { "employee_id": "EMP001" }          │
+        │                   or                         │
+        │         { "message": "No match found" }      │
+        │                                              │
 ```
 
-#### 2. Register Single Employee
+---
+
+## 📡 Request/Response Example
+
+### Face Recognition Request
+
+**Endpoint:** `POST /facial-recognition/face-recognition`
+
+**Headers:**
 ```http
-POST /facial-recognition/register-face
 Content-Type: application/json
+Accept: application/json
 ```
+
 **Request Body:**
 ```json
 {
-  "employee_id": "EMP001",
-  "images": ["base64_encoded_image_1", "base64_encoded_image_2"]
+  "image": "/9j/4AAQSkZJRgABAQAAAQABAAD..."
 }
 ```
 
-#### 3. Batch Register (ZIP Upload)
-```http
-POST /facial-recognition/register-face-batch
-Content-Type: multipart/form-data
-```
-**Form Data:**
-- `file`: ZIP file containing employee images organized by folders
+### Success Response (Match Found)
 
-#### 4. Face Recognition
-```http
-POST /facial-recognition/face-recognition
-Content-Type: application/json
-```
-**Request Body:**
-```json
-{
-  "image": "base64_encoded_image"
-}
-```
+**Status:** `200 OK`
 
-#### 5. Update Employee Data
-```http
-PUT /facial-recognition/update-face
-Content-Type: application/json
-```
-**Request Body:**
-```json
-{
-  "employee_id": "EMP001",
-  "new_images": ["base64_encoded_image_1", "base64_encoded_image_2"]
-}
-```
-
-#### 6. Delete Employee
-```http
-DELETE /facial-recognition/delete-face
-Content-Type: application/json
-```
-**Request Body:**
 ```json
 {
   "employee_id": "EMP001"
 }
 ```
 
----
+### Success Response (No Match)
 
-## 📨 Request & Response Examples
+**Status:** `200 OK`
 
-### Register Employee Faces
-
-**Request:**
-```bash
-curl -X POST "http://localhost:8000/facial-recognition/register-face" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "employee_id": "EMP001",
-    "images": [
-      "/9j/4AAQSkZJRgABAQEASABIAAD...",
-      "/9j/4AAQSkZJRgABAQEASABIAAD..."
-    ]
-  }'
+```json
+{
+  "message": "No match found"
+}
 ```
 
-**Success Response (200 OK):**
+### Error Response
+
+**Status:** `500 Internal Server Error`
+
+```json
+{
+  "detail": "Failed to process image"
+}
+```
+
+### Face Registration Request
+
+**Endpoint:** `POST /facial-recognition/register-face`
+
+**Request Body:**
+```json
+{
+  "employee_id": "EMP001",
+  "images": [
+    "/9j/4AAQSkZJRgABAQAAAQABAAD...",
+    "/9j/4AAQSkZJRgABAQAAAQABAAD..."
+  ]
+}
+```
+
+**Response:**
 ```json
 {
   "message": "Registered successfully",
@@ -268,272 +285,102 @@ curl -X POST "http://localhost:8000/facial-recognition/register-face" \
 }
 ```
 
-### Face Recognition
-
-**Request:**
-```bash
-curl -X POST "http://localhost:8000/facial-recognition/face-recognition" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "image": "/9j/4AAQSkZJRgABAQEASABIAAD..."
-  }'
-```
-
-**Success Response (200 OK):**
-```json
-{
-  "employee_id": "EMP001"
-}
-```
-
-**No Match Response (200 OK):**
-```json
-{
-  "message": "No match found"
-}
-```
-
-**Error Response (400/500):**
-```json
-{
-  "detail": "Error description message"
-}
-```
-
-### Batch Registration via ZIP
-
-**Request:**
-```bash
-curl -X POST "http://localhost:8000/facial-recognition/register-face-batch" \
-  -H "Content-Type: multipart/form-data" \
-  -F "file=@employees_batch.zip"
-```
-
-**ZIP Structure:**
-```
-employees_batch.zip
-├── EMP001/
-│   ├── photo1.jpg
-│   └── photo2.jpg
-├── EMP002/
-│   ├── photo1.jpg
-│   └── photo2.jpg
-└── ...
-```
-
 ---
 
-## 🔗 Integration with Backend Service
+## 🔗 System Integration
 
-### Communication Pattern
-
-```python
-# Spring Boot Backend Integration Example
-@RestController
-@RequestMapping("/api/attendance")
-public class AttendanceController {
-
-    @Value("${face.recognition.service.url}")
-    private String faceRecognitionUrl;
-
-    @PostMapping("/check-in")
-    public ResponseEntity<CheckInResponse> checkIn(
-            @RequestBody CheckInRequest request) {
-
-        // 1. Forward image to Face Recognition Service
-        FaceRecognitionResponse faceResponse = restTemplate.postForObject(
-            faceRecognitionUrl + "/face-recognition",
-            new FaceRecognitionRequest(request.getImage()),
-            FaceRecognitionResponse.class
-        );
-
-        // 2. Verify employee identity
-        if (faceResponse.getEmployeeId() == null) {
-            return ResponseEntity.status(401)
-                .body(new CheckInResponse("Face not recognized"));
-        }
-
-        // 3. Record attendance in database
-        attendanceService.recordCheckIn(faceResponse.getEmployeeId());
-
-        return ResponseEntity.ok(
-            new CheckInResponse("Check-in successful", faceResponse.getEmployeeId())
-        );
-    }
-}
-```
-
-### Service Discovery Configuration
-
-```yaml
-# application.yml (Spring Boot)
-face:
-  recognition:
-    service:
-      url: http://facial-recognition:8000/facial-recognition
-      timeout: 5000  # 5 seconds
-      retry:
-        max-attempts: 3
-        backoff-delay: 1000
-```
-
----
-
-## 🖼️ Image Processing Pipeline
+### Architecture Context
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                     IMAGE PROCESSING PIPELINE                           │
-├─────────────────────────────────────────────────────────────────────────┤
-│                                                                         │
-│  Input Image (Base64/ZIP)                                               │
-│       │                                                                 │
-│       ▼                                                                 │
-│  ┌─────────────────┐                                                    │
-│  │  Base64 Decode  │  ◄── Convert base64 string to raw bytes           │
-│  └────────┬────────┘                                                    │
-│           │                                                             │
-│           ▼                                                             │
-│  ┌─────────────────┐                                                    │
-│  │   OpenCV Decode │  ◄── Convert bytes to numpy array (BGR format)    │
-│  └────────┬────────┘                                                    │
-│           │                                                             │
-│           ▼                                                             │
-│  ┌─────────────────┐                                                    │
-│  │  Face Detection │  ◄── InsightFace detects faces (det_size=640x640) │
-│  └────────┬────────┘                                                    │
-│           │                                                             │
-│           ▼                                                             │
-│  ┌─────────────────┐                                                    │
-│  │ Feature Extract │  ◄── Generate 512-dimensional face embedding      │
-│  └────────┬────────┘                                                    │
-│           │                                                             │
-│           ▼                                                             │
-│  ┌─────────────────┐     ┌─────────────────┐                           │
-│  │  Cosine Similarity◄──►│  Database Query │  ◄── Compare with stored │
-│  └────────┬────────┘     └─────────────────┘      embeddings           │
-│           │                                                             │
-│           ▼                                                             │
-│  ┌─────────────────┐                                                    │
-│  │  Threshold Check│  ◄── threshold >= 0.6 for match confirmation      │
-│  └────────┬────────┘                                                    │
-│           │                                                             │
-│           ▼                                                             │
-│  ┌─────────────────┐                                                    │
-│  │   Return Result │  ◄── employee_id or "No match found"              │
-│  └─────────────────┘                                                    │
-│                                                                         │
+│                    HRM ATTENDANCE MANAGEMENT SYSTEM                     │
 └─────────────────────────────────────────────────────────────────────────┘
+
+  ┌─────────────────┐
+  │   Frontend App  │
+  │  (Web/Mobile)   │
+  └────────┬────────┘
+           │
+           ▼
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │                    SPRING BOOT BACKEND                              │
+  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐              │
+  │  │   Attendance │  │   Employee   │  │   Report     │              │
+  │  │   Service    │  │   Service    │  │   Service    │              │
+  │  └──────────────┘  └──────────────┘  └──────────────┘              │
+  │                                                                     │
+  │  ┌─────────────────────────────────────────────────────────────┐   │
+  │  │              Attendance Decision Engine                      │   │
+  │  │  • Validate recognition result                               │   │
+  │  │  • Check attendance policies                                 │   │
+  │  │  • Record attendance status (Present/Absent/Late)            │   │
+  │  └─────────────────────────────────────────────────────────────┘   │
+  └──────────────────────────────┬──────────────────────────────────────┘
+                                 │
+                                 │ REST API
+                                 ▼
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │              FACE RECOGNITION SERVICE (This Service)                │
+  │                                                                     │
+  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐              │
+  │  │   Face       │  │   Embedding  │  │   Similarity │              │
+  │  │   Detection  │  │   Extraction │  │   Matching   │              │
+  │  └──────────────┘  └──────────────┘  └──────────────┘              │
+  │                                                                     │
+  └──────────────────────────────┬──────────────────────────────────────┘
+                                 │
+                                 │ SQLAlchemy ORM
+                                 ▼
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │                         MYSQL DATABASE                              │
+  │                    (Face Embeddings Storage)                        │
+  └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### Processing Steps Explained
+### Integration Contract
 
-1. **Decoding**: Base64 strings are decoded to binary image data
-2. **Image Loading**: OpenCV converts binary data to BGR format matrices
-3. **Face Detection**: InsightFace's RetinaFace detects facial landmarks
-4. **Alignment**: Faces are aligned using 5-point landmark detection
-5. **Embedding Extraction**: ArcFace model generates 512-D feature vectors
-6. **Similarity Calculation**: Cosine similarity compares embeddings
-7. **Threshold Filtering**: Match confirmed if similarity ≥ 0.6
+| Aspect | Specification |
+|--------|---------------|
+| **Protocol** | HTTP/HTTPS |
+| **Data Format** | JSON |
+| **Image Encoding** | Base64 strings |
+| **Response Time** | Target < 2 seconds per recognition |
+| **Authentication** | Handled by backend (service-to-service) |
 
 ---
 
-## 📁 Project Structure
+## 🚀 Deployment Overview
 
-```
-facial_recognition_api/
-│
-├── 📄 app.py                          # FastAPI application entry point
-├── 📄 requirements.txt                # Python dependencies
-├── 📄 Dockerfile                      # Container configuration
-├── 📄 docker-compose.yml              # Multi-service orchestration (optional)
-├── 📄 .env                            # Environment variables (not in git)
-├── 📄 .gitignore                      # Git ignore patterns
-├── 📄 README.md                       # This file
-│
-├── 📁 src/
-│   │
-│   ├── 📁 controller/
-│   │   ├── __init__.py
-│   │   └── FaceRecognitionController.py    # API route handlers
-│   │
-│   ├── 📁 service/
-│   │   ├── FaceRecognitionService.py       # Core business logic
-│   │   └── FaceModelSingleton.py           # Batch processing service
-│   │
-│   ├── 📁 core/
-│   │   └── FaceModelSingleton.py           # Thread-safe model loader
-│   │
-│   ├── 📁 dto/
-│   │   ├── 📁 request/
-│   │   │   ├── RecognizeFaceRequest.py
-│   │   │   └── RegisterRequest.py
-│   │   └── 📁 response/
-│   │       └── zip_up_load_response.py
-│   │
-│   ├── 📁 entity/
-│   │   └── FaceEmbedding.py               # SQLAlchemy entity
-│   │
-│   └── 📁 db_config/
-│       └── mysqlDb.py                     # Database configuration
-│
-└── 📁 debug.log                          # Application logs
+### Container Architecture
+
+```dockerfile
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY .env ./
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
-### Layer Responsibilities
+### Deployment Checklist
 
-| Layer | Responsibility |
-|-------|----------------|
-| **Controller** | HTTP request/response handling, input validation |
-| **Service** | Business logic, face processing orchestration |
-| **Core** | AI model management (singleton pattern) |
-| **DTO** | Data transfer objects for API contracts |
-| **Entity** | Database models and schema definitions |
-| **DB Config** | Connection pooling and session management |
-
----
-
-## ⚙️ Environment Configuration
-
-### Required Environment Variables
-
-Create a `.env` file in the project root:
-
-```bash
-# ============================================
-# Database Configuration
-# ============================================
-DB_USER=your_db_username
-DB_PASSWORD=your_secure_password
-DB_HOST=mysql-server-host
-DB_PORT=3306
-DB_NAME=face_recognition_db
-
-# ============================================
-# Application Configuration
-# ============================================
-APP_HOST=0.0.0.0
-APP_PORT=8000
-LOG_LEVEL=INFO
-
-# ============================================
-# Face Recognition Configuration
-# ============================================
-FACE_DETECTION_THRESHOLD=0.6
-FACE_MODEL_NAME=buffalo_l
-MAX_IMAGE_SIZE=10485760  # 10MB in bytes
-```
-
-### .env.example
-
-```bash
-# Copy this file to .env and fill in your values
-DB_USER=root
-DB_PASSWORD=password123
-DB_HOST=localhost
-DB_PORT=3306
-DB_NAME=hrm_face_db
-```
+- [ ] Environment variables configured (`.env` file)
+- [ ] MySQL database accessible
+- [ ] Port 8000 exposed
+- [ ] Container resource limits set
+- [ ] Logging configured
+- [ ] Health checks implemented
 
 ---
 
@@ -541,275 +388,150 @@ DB_NAME=hrm_face_db
 
 ### Prerequisites
 
-- Python 3.11 or higher
-- MySQL 8.0+ running locally or remotely
-- 4GB+ RAM (for AI model loading)
+- Python 3.11+
+- MySQL 8.0+
+- Virtual environment tool (venv/conda)
 
-### Installation Steps
+### Setup Instructions
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-org/facial_recognition_api.git
+git clone https://github.com/TRONGG2005k/facial_recognition_api.git
 cd facial_recognition_api
 
 # 2. Create virtual environment
 python -m venv venv
 
 # 3. Activate virtual environment
-# On Windows:
+# Windows:
 venv\Scripts\activate
-# On macOS/Linux:
+# macOS/Linux:
 source venv/bin/activate
 
 # 4. Install dependencies
 pip install -r requirements.txt
 
-# 5. Set up environment variables
-cp .env.example .env
+# 5. Configure environment variables
+copy .env.example .env
 # Edit .env with your database credentials
 
 # 6. Run the application
 uvicorn app:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-### Verification
+### Verify Installation
 
 ```bash
-# Test health endpoint
+# Health check
 curl http://localhost:8000/facial-recognition/hello
 
-# Expected response:
-# {"message": "Hello world"}
+# Expected response
+{"message": "Hello world"}
 ```
 
-### API Documentation
+### API Documentation (Swagger UI)
 
-Once running, access interactive API docs:
+Once running, access interactive API docs at:
 
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
+```
+http://localhost:8000/docs
+```
 
 ---
 
-## 🐳 Docker Deployment
+## 🐳 Docker Setup
 
-### Single Container Deployment
+### Build and Run
 
 ```bash
-# Build Docker image
-docker build -t hrm-face-recognition:latest .
+# Build the Docker image
+docker build -t hrm-face-recognition .
 
-# Run container
+# Run the container
 docker run -d \
   --name face-recognition-service \
   -p 8000:8000 \
   --env-file .env \
-  --restart unless-stopped \
-  hrm-face-recognition:latest
+  hrm-face-recognition
 ```
 
 ### Docker Compose (Recommended)
 
 ```yaml
-# docker-compose.yml
 version: '3.8'
 
 services:
   face-recognition:
     build: .
-    container_name: face-recognition-service
+    container_name: hrm-face-recognition
     ports:
       - "8000:8000"
     env_file:
       - .env
+    networks:
+      - hrm-network
     restart: unless-stopped
-    networks:
-      - hrm-network
-    depends_on:
-      - mysql
-
-  mysql:
-    image: mysql:8.0
-    container_name: hrm-mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-    networks:
-      - hrm-network
-
-volumes:
-  mysql_data:
 
 networks:
   hrm-network:
     driver: bridge
 ```
 
-### AWS EC2 Deployment
+### Container Management
 
 ```bash
-# 1. SSH into EC2 instance
-ssh -i your-key.pem ec2-user@your-ec2-ip
+# View logs
+docker logs -f hrm-face-recognition
 
-# 2. Install Docker and Docker Compose
-sudo yum update -y
-sudo yum install docker -y
-sudo service docker start
-sudo usermod -a -G docker ec2-user
+# Stop container
+docker stop hrm-face-recognition
 
-# 3. Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-
-# 4. Clone and deploy
-git clone https://github.com/your-org/facial_recognition_api.git
-cd facial_recognition_api
-docker-compose up -d
+# Remove container
+docker rm hrm-face-recognition
 ```
-
----
-
-## ⚡ Performance Considerations
-
-### Optimization Strategies
-
-| Strategy | Implementation | Impact |
-|----------|----------------|--------|
-| **Model Singleton** | Single instance shared across requests | Reduces memory by ~500MB per worker |
-| **Database Yielding** | `yield_per(1000)` for large queries | Prevents memory exhaustion |
-| **Batch Processing** | ZIP upload for bulk registration | 10x faster than individual calls |
-| **Async Operations** | FastAPI async/await support | Higher concurrency handling |
-| **Connection Pooling** | SQLAlchemy managed pools | Reduces connection overhead |
-
-### Benchmarks
-
-| Operation | Average Latency | Throughput |
-|-----------|-----------------|------------|
-| Face Recognition | ~150ms | 6-7 req/sec |
-| Single Registration | ~200ms | 5 req/sec |
-| Batch Registration | ~2s per 100 faces | 50 faces/sec |
-
-### Scaling Recommendations
-
-1. **Horizontal Scaling**: Deploy multiple containers behind a load balancer
-2. **GPU Acceleration**: Use `ctx_id=0` with CUDA for 5x speedup
-3. **Caching**: Implement Redis for frequent employee lookups
-4. **Database Indexing**: Ensure `employee_id` is indexed in MySQL
-
----
-
-## 🛡️ Error Handling Strategy
-
-### Exception Hierarchy
-
-```
-FaceRecognitionError (Base)
-├── ImageProcessingError
-│   └── InvalidImageFormatError
-│   └── FaceDetectionError
-│   └── NoFaceDetectedError
-├── DatabaseError
-│   └── EmployeeNotFoundError
-│   └── DuplicateEntryError
-└── RecognitionError
-    └── ThresholdNotMetError
-    └── ModelInferenceError
-```
-
-### Error Response Format
-
-```json
-{
-  "detail": "Human-readable error message",
-  "error_code": "ERROR_CODE",
-  "timestamp": "2024-01-15T10:30:00Z",
-  "request_id": "uuid-for-tracing"
-}
-```
-
-### HTTP Status Codes
-
-| Code | Scenario | Handling |
-|------|----------|----------|
-| `200` | Success | Normal processing |
-| `400` | Bad Request | Invalid image format, no face detected |
-| `401` | Unauthorized | Face not recognized (threshold not met) |
-| `404` | Not Found | Employee ID not in database |
-| `500` | Server Error | Model failure, database connection issue |
-| `503` | Service Unavailable | Model loading, high load |
-
-### Logging Strategy
-
-```python
-# Log levels used
-DEBUG   - Detailed processing steps
-INFO    - Successful operations
-WARNING - Recoverable issues (no face in image)
-ERROR   - Failures requiring attention
-```
-
-All logs are written to:
-- Console (stdout)
-- `debug.log` file (rotated daily)
 
 ---
 
 ## 🔮 Future Improvements
 
-### Planned Enhancements
+Planned enhancements for upcoming releases:
 
-| Priority | Feature | Description |
-|----------|---------|-------------|
-| 🔴 High | **Redis Cache** | Cache embeddings for sub-50ms recognition |
-| 🔴 High | **GPU Support** | CUDA acceleration for production workloads |
-| 🟡 Medium | **Anti-Spoofing** | Liveness detection to prevent photo attacks |
-| 🟡 Medium | **Kafka Events** | Async event streaming for attendance records |
-| 🟡 Medium | **Metrics** | Prometheus/Grafana monitoring integration |
-| 🟢 Low | **Multi-face** | Support multiple faces in single image |
-| 🟢 Low | **Age/Gender** | Demographics extraction alongside recognition |
-
-### Technical Debt
-
-- [ ] Implement comprehensive unit tests (pytest)
-- [ ] Add integration tests with testcontainers
-- [ ] Set up CI/CD pipeline (GitHub Actions)
-- [ ] Add API rate limiting
-- [ ] Implement request validation middleware
+| Priority | Enhancement | Description |
+|----------|-------------|-------------|
+| 🔴 High | **Async Processing** | Implement background task queue for batch operations |
+| 🔴 High | **Model Optimization** | Quantize models for faster inference |
+| 🟡 Medium | **Multi-face Detection** | Support recognition of multiple faces in single image |
+| 🟡 Medium | **Confidence Scoring** | Return similarity scores for matches |
+| 🟡 Medium | **API Rate Limiting** | Implement request throttling |
+| 🟢 Low | **Metrics & Monitoring** | Add Prometheus metrics export |
+| 🟢 Low | **Health Check Endpoint** | Dedicated `/health` for load balancers |
 
 ---
 
-## 👨‍💻 Author
+## 👤 Author
 
-**Developed by:** trọng
+**HRM Development Team**
 
-**Contact:** tn061350951@gmail.com
+- 🔗 **Repository**: [facial_recognition_api](https://github.com/TRONGG2005k/facial_recognition_api)
+- 📧 **Contact**: Contact the HRM team for support
 
-**Repository:** https://github.com/TRONGG2005k/facial_recognition_api
+### Contributing
+
+Contributions are welcome! Please ensure:
+- Code follows PEP 8 style guidelines
+- All tests pass before submitting PR
+- Documentation is updated for new features
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🙏 Acknowledgments
-
-- [InsightFace](https://github.com/deepinsight/insightface) for the face recognition model
-- [FastAPI](https://fastapi.tiangolo.com/) for the excellent web framework
-- [OpenCV](https://opencv.org/) for image processing capabilities
+This project is proprietary software developed for the HRM Attendance Management System.
 
 ---
 
 <div align="center">
 
-**Made with ❤️ for Smarter Attendance Management**
-
-[⬆ Back to Top](#-hrm-face-recognition-service)
+**Made with ❤️ for smarter attendance management**
 
 </div>
