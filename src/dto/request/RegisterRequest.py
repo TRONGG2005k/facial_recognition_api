@@ -1,6 +1,25 @@
-from pydantic import BaseModel
-from typing import List
+"""
+Request model cho đăng ký khuôn mặt.
+"""
+
+from pydantic import BaseModel, Field
+
 
 class RegisterRequest(BaseModel):
-    images: List[str]       # danh sách base64
-    employee_id: str
+    """
+    Request đăng ký khuôn mặt mới.
+    
+    Attributes:
+        images: Danh sách ảnh base64 của khuôn mặt
+        employee_id: ID nhân viên cần đăng ký
+    """
+    images: list[str] = Field(
+        ...,
+        min_length=1,
+        description="Danh sách ảnh base64, ít nhất 1 ảnh"
+    )
+    employee_id: str = Field(
+        ...,
+        min_length=1,
+        description="ID nhân viên"
+    )

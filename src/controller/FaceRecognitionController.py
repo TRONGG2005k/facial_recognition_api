@@ -1,218 +1,237 @@
-import logging
-from fastapi import APIRouter, HTTPException, UploadFile, File, Depends
-from sqlalchemy.orm import Session
-from pydantic import BaseModel
-from typing import List
+"""
+Controller xử lý các API endpoints cho nhận diện khuôn mặt.
+"""
 
-from src.service.FaceRecognitionService import FaceRecognitionService
-from src.service.FaceModelSingleton import FaceBatchService
-from src.dto.request.RegisterRequest import RegisterRequest
-from src.dto.request.RecognizeFaceRequest import RecognizeFaceRequest
-from src.db_config.mysqlDb import get_db
+import logging
+import time
+from typing import Callable, TypeVar
+from functools import wraps
+
+from fastapi import APIRouter, HTTPException, UploadFile, File, Depends
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+
+from src.service import FaceRecognitionService, FaceBatchService
+from src.dto.request import RegisterRequest, RecognizeFaceRequest
+from src.db_config import get_db
 
 logger = logging.getLogger(__name__)
+router = APIRouter(tags=["Face Recognition"])
 
-router = APIRouter()
+# Initialize services
+_face_service = FaceRecognitionService()
+_batch_service = FaceBatchService(_face_service)
 
-face_service = FaceRecognitionService()
-batch_service = FaceBatchService(face_service)
 
+# ============================
+# Request Models
+# ============================
 
 class UpdateFaceRequest(BaseModel):
-    employee_id: str
-    new_images: List[str]
+    """Request cập nhật khuôn mặt."""
+    employee_id: str = Field(..., min_length=1)
+    new_images: list[str] = Field(..., min_length=1)
 
 
 class DeleteFaceRequest(BaseModel):
-    employee_id: str
+    """Request xóa khuôn mặt."""
+    employee_id: str = Field(..., min_length=1)
 
 
-# ================= HELLO =================
+# ============================
+# Response Models
+# ============================
+
+class SuccessResponse(BaseModel):
+    """Response thành công chung."""
+    message: str
+
+
+class RegisterResponse(SuccessResponse):
+    """Response đăng ký khuôn mặt."""
+    embeddings: int
+
+
+class DeleteResponse(SuccessResponse):
+    """Response xóa khuôn mặt."""
+    deleted: int
+
+
+class RecognizeResponse(BaseModel):
+    """Response nhận diện khuôn mặt."""
+    message: str | None = None
+    employee_id: str | None = None
+
+
+# ============================
+# Decorators
+# ============================
+
+T = TypeVar("T")
+
+
+def handle_db_transaction(
+    func: Callable[..., T]
+) -> Callable[..., T]:
+    """
+    Decorator xử lý database transaction.
+    
+    Tự động commit nếu thành công, rollback nếu có lỗi.
+    """
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        db: Session | None = kwargs.get("db")
+        try:
+            result = func(*args, **kwargs)
+            if db:
+                db.commit()
+            return result
+        except HTTPException:
+            if db:
+                db.rollback()
+            raise
+        except Exception as e:
+            if db:
+                db.rollback()
+            logger.error(f"Database error: {str(e)}", exc_info=True)
+            raise HTTPException(status_code=500, detail=str(e))
+    return wrapper
+
+
+def log_endpoint(action: str):
+    """
+    Decorator log thông tin endpoint.
+    
+    Args:
+        action: Mô tả action đang thực hiện
+    """
+    def decorator(func: Callable[..., T]) -> Callable[..., T]:
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            logger.debug(f"{action} endpoint called")
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+
+
+# ============================
+# Endpoints
+# ============================
 
 @router.get("/hello")
-def hello():
-    logger.debug("Hello endpoint called")
+@log_endpoint("Hello")
+def hello() -> dict[str, str]:
+    """Endpoint test kết nối."""
     return {"message": "Hello world"}
 
 
-# ================= BATCH REGISTER =================
-
 @router.post("/register-face-batch")
+@log_endpoint("Batch register")
 async def register_face_batch(
     file: UploadFile = File(...),
     db: Session = Depends(get_db)
-):
-
-    logger.debug(f"Batch register called with file: {file.filename}")
+) -> dict:
+    """
+    Đăng ký khuôn mặt hàng loạt từ file ZIP.
+    
+    Cấu trúc ZIP: employee_id/FACE/image.jpg
+    """
+    if not file.filename or not file.filename.lower().endswith(".zip"):
+        logger.warning(f"Invalid file type: {file.filename}")
+        raise HTTPException(status_code=400, detail="File must be ZIP")
 
     try:
-
-        if not file.filename.lower().endswith(".zip"):
-            logger.warning(f"Invalid file type: {file.filename}")
-            raise HTTPException(
-                status_code=400,
-                detail="File must be ZIP"
-            )
-
-        result = batch_service.register_from_zip(
-            db,
-            file.file
-        )
-
+        result = _batch_service.register_from_zip(db, file.file)
         db.commit()
-
         logger.info(f"Batch register completed: {result}")
-        return result
-
+        return result.model_dump(by_alias=True)
     except Exception as e:
-
         logger.error(f"Batch register failed: {str(e)}", exc_info=True)
         db.rollback()
-
-        raise HTTPException(
-            status_code=500,
-            detail=str(e)
-        )
+        raise HTTPException(status_code=500, detail=str(e))
 
 
-# ================= REGISTER =================
-
-@router.post("/register-face")
+@router.post("/register-face", response_model=RegisterResponse)
+@log_endpoint("Register face")
+@handle_db_transaction
 def register_face(
     request: RegisterRequest,
     db: Session = Depends(get_db)
-):
-
-    logger.debug(f"Register face called for employee_id: {request.employee_id}, images: {len(request.images)}")
-
-    try:
-
-        count = face_service.register_from_base64(
-            db,
-            request.employee_id,
-            request.images
-        )
-
-        db.commit()
-
-        logger.info(f"Register face completed for {request.employee_id}: {count} embeddings")
-        return {
-            "message": "Registered successfully",
-            "embeddings": count
-        }
-
-    except Exception as e:
-
-        logger.error(f"Register face failed for {request.employee_id}: {str(e)}", exc_info=True)
-        db.rollback()
-
-        raise HTTPException(
-            status_code=400,
-            detail=str(e)
-        )
+) -> RegisterResponse:
+    """Đăng ký khuôn mặt mới cho nhân viên."""
+    logger.debug(
+        f"Registering face for employee: {request.employee_id}, "
+        f"images: {len(request.images)}"
+    )
+    
+    count = _face_service.register_from_base64(
+        db,
+        request.employee_id,
+        request.images
+    )
+    
+    logger.info(f"Registered {count} embeddings for {request.employee_id}")
+    return RegisterResponse(
+        message="Registered successfully",
+        embeddings=count
+    )
 
 
-# ================= RECOGNIZE =================
-
-@router.post("/face-recognition")
+@router.post("/face-recognition", response_model=RecognizeResponse)
+@log_endpoint("Face recognition")
 def face_recognition(
     request: RecognizeFaceRequest,
     db: Session = Depends(get_db)
-):
-
-    logger.debug("Face recognition called")
-
-    try:
-
-        employee_id = face_service.recognize(
-            db,
-            request.image
-        )
-
-        if employee_id is None:
-            logger.info("Face recognition: No match found")
-            return {"message": "No match found"}
-
-        logger.info(f"Face recognition: Matched employee_id: {employee_id}")
-        return {"employee_id": employee_id}
-
-    except Exception as e:
-
-        logger.error(f"Face recognition failed: {str(e)}", exc_info=True)
-        raise HTTPException(
-            status_code=500,
-            detail=str(e)
-        )
+) -> RecognizeResponse:
+    """Nhận diện khuôn mặt."""
+    employee_id = _face_service.recognize(db, request.image)
+    
+    if employee_id is None:
+        return RecognizeResponse(message=None)
+    
+    return RecognizeResponse(employee_id=employee_id)
 
 
-# ================= UPDATE =================
-
-@router.put("/update-face")
+@router.put("/update-face", response_model=RegisterResponse)
+@log_endpoint("Update face")
+@handle_db_transaction
 def update_face(
     request: UpdateFaceRequest,
     db: Session = Depends(get_db)
-):
-
-    logger.debug(f"Update face called for employee_id: {request.employee_id}, images: {len(request.new_images)}")
-
-    try:
-
-        count = face_service.update(
-            db,
-            request.employee_id,
-            request.new_images
-        )
-
-        db.commit()
-
-        logger.info(f"Update face completed for {request.employee_id}: {count} embeddings")
-        return {
-            "message": "Updated successfully",
-            "embeddings": count
-        }
-
-    except Exception as e:
-
-        logger.error(f"Update face failed for {request.employee_id}: {str(e)}", exc_info=True)
-        db.rollback()
-
-        raise HTTPException(
-            status_code=400,
-            detail=str(e)
-        )
+) -> RegisterResponse:
+    """Cập nhật khuôn mặt cho nhân viên."""
+    logger.debug(
+        f"Updating face for employee: {request.employee_id}, "
+        f"images: {len(request.new_images)}"
+    )
+    
+    count = _face_service.update(
+        db,
+        request.employee_id,
+        request.new_images
+    )
+    
+    logger.info(f"Updated {count} embeddings for {request.employee_id}")
+    return RegisterResponse(
+        message="Updated successfully",
+        embeddings=count
+    )
 
 
-# ================= DELETE =================
-
-@router.delete("/delete-face")
+@router.delete("/delete-face", response_model=DeleteResponse)
+@log_endpoint("Delete face")
+@handle_db_transaction
 def delete_face(
     request: DeleteFaceRequest,
     db: Session = Depends(get_db)
-):
-
-    logger.debug(f"Delete face called for employee_id: {request.employee_id}")
-
-    try:
-
-        deleted = face_service.delete(
-            db,
-            request.employee_id
-        )
-
-        db.commit()
-
-        logger.info(f"Delete face completed for {request.employee_id}: {deleted} embeddings deleted")
-        return {
-            "message": "Deleted successfully",
-            "deleted": deleted
-        }
-
-    except Exception as e:
-
-        logger.error(f"Delete face failed for {request.employee_id}: {str(e)}", exc_info=True)
-        db.rollback()
-
-        raise HTTPException(
-            status_code=400,
-            detail=str(e)
-        )
+) -> DeleteResponse:
+    """Xóa khuôn mặt của nhân viên."""
+    logger.debug(f"Deleting face for employee: {request.employee_id}")
+    
+    deleted = _face_service.delete(db, request.employee_id)
+    
+    logger.info(f"Deleted {deleted} embeddings for {request.employee_id}")
+    return DeleteResponse(
+        message="Deleted successfully",
+        deleted=deleted
+    )

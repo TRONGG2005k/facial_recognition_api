@@ -746,3 +746,16 @@ FROM face_embeddings
 2026-02-17 08:26:15,610 - src.controller.FaceRecognitionController - INFO - Face recognition: Matched employee_id: NV0011
 2026-02-17 08:26:15,632 - src.db_config.mysqlDb - DEBUG - Closing database session
 2026-02-17 08:26:15,648 - sqlalchemy.engine.Engine - INFO - ROLLBACK
+2026-03-25 07:20:03,279 - app - INFO - FastAPI app initialized with facial recognition routes
+2026-03-25 07:20:03,281 - app - INFO - Starting up...
+2026-03-25 07:20:03,826 - sqlalchemy.engine.Engine - INFO - SELECT DATABASE()
+2026-03-25 07:20:03,826 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2026-03-25 07:20:03,928 - sqlalchemy.engine.Engine - INFO - SELECT @@sql_mode
+2026-03-25 07:20:03,928 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2026-03-25 07:20:03,962 - sqlalchemy.engine.Engine - INFO - SELECT @@lower_case_table_names
+2026-03-25 07:20:03,974 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2026-03-25 07:20:04,061 - sqlalchemy.engine.Engine - INFO - BEGIN (implicit)
+2026-03-25 07:20:04,062 - sqlalchemy.engine.Engine - INFO - DESCRIBE `face`.`face_embeddings`
+2026-03-25 07:20:04,062 - sqlalchemy.engine.Engine - INFO - [raw sql] {}
+2026-03-25 07:20:04,107 - sqlalchemy.engine.Engine - INFO - COMMIT
+2026-03-25 07:20:04,183 - src.db_config.mysqlDb - INFO - Database tables created or verified
